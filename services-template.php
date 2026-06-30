@@ -7,6 +7,18 @@
    El alcance detallado de cada servicio vive en sus páginas hijas.
    =========================================================== */ ?>
 
+<?php
+/* -----------------------------------------------------------
+   URL de la imagen de CADA servicio — edita una por una aquí.
+   Pega la URL completa del archivo en la media library de WordPress
+   (Biblioteca de medios -> abre la imagen -> copia la "URL del archivo").
+   ----------------------------------------------------------- */
+$img_general_labor          = '/wp-content/uploads/2026/06/GeneralLabors-scaled.jpeg'; // TODO(Daniel): URL imagen General Labor
+$img_vineyard_installations = '/wp-content/uploads/2026/06/VineyardInstallations-scaled.jpg'; // TODO(Daniel): URL imagen Vineyard Installations
+$img_vineyard_management    = '/wp-content/uploads/2026/06/VineyardManagement-scaled.jpg'; // TODO(Daniel): URL imagen Vineyard Management
+$img_consulting             = '/wp-content/uploads/2026/06/Consultation-scaled.jpg'; // TODO(Daniel): URL imagen Consulting
+?>
+
 <main data-services class="font-sans text-raiz-profunda">
 
   <!-- =================== S1 · HEADER =================== -->
@@ -34,7 +46,7 @@
             'desc' => 'Skilled field crews who keep your vines healthy and productive all season.',
             'frame' => 'From pruning to harvest, our crews handle the hands on work your vineyard needs, with the supervision and standards to do it right.',
             'href' => '/services/general-labor',
-            'img' => 'general-labor.jpg',
+            'img' => $img_general_labor,
           ],
           [
             'num' => '02',
@@ -42,7 +54,7 @@
             'desc' => 'From raw land to productive vineyard, built right from day one.',
             'frame' => 'We take new and established sites from the ground up, setting a solid foundation for healthy, productive vines.',
             'href' => '/services/vineyard-installations',
-            'img' => 'vineyard-installations.jpg',
+            'img' => $img_vineyard_installations,
           ],
           [
             'num' => '03',
@@ -50,7 +62,7 @@
             'desc' => 'Hands on stewardship from dormancy through harvest.',
             'frame' => 'Season round care that follows your vineyard through every stage, from dormancy and bud break to veraison and harvest.',
             'href' => '/services/vineyard-management',
-            'img' => 'vineyard-management.jpg',
+            'img' => $img_vineyard_management,
           ],
           [
             'num' => '04',
@@ -58,7 +70,7 @@
             'desc' => 'Practical, site specific guidance backed by real vineyard experience.',
             'frame' => 'When you need an expert read on your site, we bring practical guidance grounded in real field experience.',
             'href' => '/services/consulting',
-            'img' => 'consulting.jpg',
+            'img' => $img_consulting,
           ],
         ];
         foreach ($services as $i => $s):
@@ -67,8 +79,8 @@
         <article class="reveal grid items-center gap-8 border-t border-stone-200 py-14 lg:grid-cols-2 lg:gap-14 lg:py-20">
           <!-- Imagen -->
           <div class="<?php echo $reverse ? 'lg:order-2' : ''; ?>">
-            <!-- TODO(Daniel): foto real -> /wp-content/uploads/2026/06/<?php echo $s['img']; ?> -->
-            <div class="aspect-[4/3] w-full overflow-hidden rounded-2xl bg-noche-vinedo/30 bg-cover bg-center" style="background-image:url('/wp-content/uploads/2026/06/<?php echo $s['img']; ?>')"></div>
+            <!-- Foto del servicio (URL desde la variable $img_* definida arriba). -->
+            <div class="aspect-[4/3] w-full overflow-hidden rounded-2xl bg-noche-vinedo/30 bg-cover bg-center" style="background-image:url('<?php echo esc_url($s['img']); ?>')"></div>
           </div>
           <!-- Texto -->
           <div class="<?php echo $reverse ? 'lg:order-1' : ''; ?>">

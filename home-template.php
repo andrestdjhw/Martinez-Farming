@@ -13,15 +13,15 @@
    Pega la URL completa del archivo en la media library de WordPress
    (Biblioteca de medios -> abre la imagen -> copia la "URL del archivo").
    ----------------------------------------------------------- */
-$img_general_labor          = ''; // TODO(Daniel): URL imagen General Labor
-$img_vineyard_installations = ''; // TODO(Daniel): URL imagen Vineyard Installations
-$img_vineyard_management    = ''; // TODO(Daniel): URL imagen Vineyard Management
-$img_consulting             = ''; // TODO(Daniel): URL imagen Consulting
+$img_general_labor          = '/wp-content/uploads/2026/06/GeneralLabors-scaled.jpeg';
+$img_vineyard_installations = '/wp-content/uploads/2026/06/VineyardInstallations-scaled.jpg';
+$img_vineyard_management    = '/wp-content/uploads/2026/06/VineyardManagement-scaled.jpg';
+$img_consulting             = '/wp-content/uploads/2026/06/Consultation-scaled.jpg';
 
 /* Otras imágenes del Home — pega la URL completa de la media library. */
-$img_award_seal  = ''; // TODO(Daniel): URL sello/foto del premio (sección Award)
-$img_legacy_bg   = ''; // TODO(Daniel): URL imagen de fondo de Legacy (parallax)
-$img_legacy_side = ''; // TODO(Daniel): URL imagen del lado derecho de Legacy
+$img_award_seal  = '/wp-content/uploads/2026/06/Martinez-Farming_Sello.png';
+$img_legacy_bg   = '/wp-content/uploads/2026/06/Estampados-MF_4-scaled.png';
+$img_legacy_side = '/wp-content/uploads/2026/06/LegacyMF-scaled.jpg';
 ?>
 
 <main data-home class="font-sans text-raiz-profunda">
@@ -35,7 +35,7 @@ $img_legacy_side = ''; // TODO(Daniel): URL imagen del lado derecho de Legacy
       poster="/wp-content/uploads/2026/06/HeroMartinezFarming-scaled.jpg"
       aria-hidden="true"
     >
-      <source src="/wp-content/uploads/2026/06/hero-video.mp4" type="video/mp4" />
+      <source src="/wp-content/uploads/2026/06/VineyardHeroPanel.mp4" type="video/mp4" />
     </video>
     <div class="absolute inset-0 bg-gradient-to-t from-raiz-profunda/90 via-raiz-profunda/60 to-raiz-profunda/45"></div>
 
@@ -156,17 +156,24 @@ $img_legacy_side = ''; // TODO(Daniel): URL imagen del lado derecho de Legacy
   </section>
 
   <!-- =================== S4 · SEASON CYCLE (firma) =================== -->
-  <section aria-labelledby="season-h" class="bg-white" data-season>
-    <div class="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:py-24">
+  <section aria-labelledby="season-h" class="relative isolate overflow-hidden bg-[#090a0f] text-white" data-season>
+    <!-- Fondo de estrellas animado (.season-sky, definido en index.css) -->
+    <div class="season-sky -z-10" aria-hidden="true">
+      <div id="season-stars"></div>
+      <div id="season-stars2"></div>
+      <div id="season-stars3"></div>
+    </div>
+
+    <div class="relative mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:py-24">
       <div class="max-w-3xl reveal">
         <p class="text-xs font-bold uppercase tracking-[0.22em] text-olivar-vivo">All year</p>
-        <h2 id="season-h" class="mt-2 font-display text-3xl text-raiz-profunda sm:text-4xl">We are with your vineyard all year.</h2>
-        <p class="mt-4 text-stone-600">From dormancy to harvest, every stage gets the same attention and the same standard.</p>
+        <h2 id="season-h" class="mt-2 font-display text-3xl text-white sm:text-4xl">We are with your vineyard all year.</h2>
+        <p class="mt-4 text-tierra-suave">From dormancy to harvest, every stage gets the same attention and the same standard.</p>
       </div>
 
       <div class="mt-12">
         <!-- Track horizontal con scroll-snap controlado por el usuario -->
-        <div id="season-track" class="season-track flex snap-x snap-mandatory overflow-x-auto scroll-smooth rounded-2xl border border-stone-200">
+        <div id="season-track" class="season-track flex snap-x snap-mandatory overflow-x-auto scroll-smooth rounded-2xl border border-white/10 shadow-2xl">
           <?php
             $stages = [
               ['01', 'Dormancy', 'Pruning strategy that sets the season up right.'],
@@ -186,7 +193,7 @@ $img_legacy_side = ''; // TODO(Daniel): URL imagen del lado derecho de Legacy
         <!-- Control deslizador -->
         <div class="mt-6">
           <input id="season-range" type="range" min="0" max="3" step="1" value="0" aria-label="Scrub through the growing season" class="w-full accent-olivar-vivo" />
-          <div class="mt-3 flex justify-between text-xs font-medium uppercase tracking-wider text-stone-500">
+          <div class="mt-3 flex justify-between text-xs font-medium uppercase tracking-wider text-tierra-suave/80">
             <span>Dormancy</span><span>Bud break</span><span>Veraison</span><span>Harvest</span>
           </div>
         </div>
@@ -200,11 +207,15 @@ $img_legacy_side = ''; // TODO(Daniel): URL imagen del lado derecho de Legacy
       <!-- Visual del premio (sello/foto) -->
       <div class="reveal lg:col-span-5">
         <!-- TODO(Daniel): sello oficial del premio o foto de la entrega -->
-        <div class="grid aspect-square w-full place-items-center rounded-2xl border border-raiz-profunda/10 bg-raiz-profunda bg-cover bg-center text-center" style="background-image:url('<?php echo esc_url($img_award_seal); ?>')">
-          <div class="px-8 text-tierra-suave">
-            <svg class="mx-auto h-12 w-12 text-olivar-vivo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="6"/><path d="M8.21 13.89 7 22l5-3 5 3-1.21-8.12"/></svg>
-            <p class="mt-3 text-sm">[ TODO: sello oficial del premio<br/>o foto de la entrega ]</p>
-          </div>
+        <div class="grid aspect-square w-full place-items-center overflow-hidden rounded-2xl border border-raiz-profunda/10 bg-raiz-profunda p-8 text-center sm:p-10">
+          <?php if ( $img_award_seal ) : ?>
+            <img src="<?php echo esc_url($img_award_seal); ?>" alt="2026 San Luis Obispo County Winegrape Grower of the Year — Martinez Farming" class="h-full w-full object-contain" loading="lazy" />
+          <?php else : ?>
+            <div class="px-8 text-tierra-suave">
+              <svg class="mx-auto h-12 w-12 text-olivar-vivo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="6"/><path d="M8.21 13.89 7 22l5-3 5 3-1.21-8.12"/></svg>
+              <p class="mt-3 text-sm">[ TODO: sello oficial del premio<br/>o foto de la entrega ]</p>
+            </div>
+          <?php endif; ?>
         </div>
       </div>
       <!-- Frase fuerte -->
@@ -270,6 +281,23 @@ $img_legacy_side = ''; // TODO(Daniel): URL imagen del lado derecho de Legacy
     ></div>
 
     <div class="relative z-10 mx-auto grid max-w-7xl items-center gap-12 px-4 py-20 sm:px-6 lg:grid-cols-2 lg:py-24">
+      <!-- Mapa de Google Maps del área de servicio (izquierda).
+           TODO(Daniel): reemplaza el src por el embed real (Maps -> Compartir -> Insertar un mapa). -->
+      <div class="reveal">
+        <div class="overflow-hidden rounded-2xl border border-stone-200 shadow-sm">
+          <iframe
+            src="https://www.google.com/maps?q=Paso+Robles,+CA&z=8&output=embed"
+            title="Martinez Farming service area — Central Coast, California"
+            class="aspect-[4/3] w-full"
+            style="border:0"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            allowfullscreen
+          ></iframe>
+        </div>
+      </div>
+
+      <!-- Texto (derecha) -->
       <div class="reveal">
         <p class="text-xs font-bold uppercase tracking-[0.22em] text-olivar-vivo">Service area</p>
         <h2 id="area-h" class="mt-2 font-display text-3xl text-raiz-profunda sm:text-4xl">Rooted in Paso Robles. Serving the Central Coast.</h2>
@@ -280,48 +308,36 @@ $img_legacy_side = ''; // TODO(Daniel): URL imagen del lado derecho de Legacy
           <li class="flex items-center gap-2"><span class="h-2 w-2 rounded-full bg-olivar-vivo"></span> Santa Barbara County</li>
         </ul>
       </div>
-
-      <!-- Mapa estilizado interactivo (hover ilumina cada condado + pin en Paso Robles).
-           TODO(Daniel): si quieres precisión geográfica, reemplaza estos paths por un SVG real de los condados. -->
-      <div class="reveal">
-        <svg viewBox="0 0 320 360" class="county-map w-full" role="img" aria-label="Central Coast service area: San Luis Obispo, Monterey, and Santa Barbara counties">
-          <g class="counties" fill="#bdbba6" fill-opacity="0.35" stroke="#543167" stroke-opacity="0.25" stroke-width="1.5">
-            <path class="county" data-name="Monterey" d="M40 20 L210 30 L190 120 L150 140 L60 130 Z"><title>Monterey County</title></path>
-            <path class="county" data-name="San Luis Obispo" d="M60 130 L150 140 L190 120 L240 170 L210 250 L90 240 Z"><title>San Luis Obispo County</title></path>
-            <path class="county" data-name="Santa Barbara" d="M90 240 L210 250 L260 300 L240 345 L110 330 Z"><title>Santa Barbara County</title></path>
-          </g>
-          <!-- Pin en Paso Robles (aprox., dentro de SLO County) -->
-          <g class="pin" transform="translate(150 195)">
-            <circle r="16" fill="#a5a83d" fill-opacity="0.18"/>
-            <path d="M0 -11 C6 -11 10 -7 10 -1 C10 6 0 14 0 14 C0 14 -10 6 -10 -1 C-10 -7 -6 -11 0 -11 Z" fill="#543167"/>
-            <circle cy="-1" r="3.4" fill="#fff"/>
-            <text x="16" y="2" font-size="11" font-weight="700" fill="#543167">Paso Robles</text>
-          </g>
-        </svg>
-      </div>
     </div>
   </section>
 
   <!-- =================== S8 · LEGACY (parallax) =================== -->
   <section aria-labelledby="legacy-h" class="relative isolate overflow-hidden bg-raiz-profunda text-white">
-    <!-- Imagen de fondo (parallax). URL desde $img_legacy_bg. -->
+    <!-- Fondo (estampado/parallax). URL desde $img_legacy_bg. -->
     <div class="parallax-bg absolute inset-0 -z-10 scale-110 bg-cover bg-center" data-parallax style="background-image:url('<?php echo esc_url($img_legacy_bg); ?>')"></div>
     <div class="absolute inset-0 -z-10 bg-raiz-profunda/70"></div>
-    <div class="mx-auto grid max-w-7xl items-center gap-12 px-4 py-28 sm:px-6 lg:grid-cols-2 lg:gap-16 lg:py-36">
-      <!-- Texto (izquierda) -->
-      <div class="max-w-2xl reveal">
-        <h2 id="legacy-h" class="font-display text-3xl leading-tight sm:text-5xl">We grow a legacy, one harvest at a time.</h2>
-        <p class="mt-6 text-lg leading-relaxed text-tierra-suave">We put our name behind the work. Honor the land, do it right, and earn the trust of the growers who depend on us. That is how we believe great wine begins, in a vineyard cultivated with pride.</p>
-        <p class="mt-8 font-display text-2xl text-white">From the earth, a legacy is born.</p>
-        <?php /* TODO(Daniel): [CONFIRMAR] año real de fundación e historia de origen de Octavio Garcia para profundizar esta sección. */ ?>
-        <a href="/about" class="mt-9 inline-flex items-center gap-2 rounded-md border border-white/40 px-6 py-3 font-bold text-white transition-colors hover:bg-white hover:text-raiz-profunda focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-raiz-profunda">
-          Read our story
-          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-        </a>
+
+    <!-- Imagen a sangre en la mitad derecha (desktop). URL desde $img_legacy_side. -->
+    <div class="absolute inset-y-0 right-0 hidden w-1/2 bg-noche-vinedo/30 bg-cover bg-center lg:block" style="background-image:url('<?php echo esc_url($img_legacy_side); ?>')" aria-hidden="true"></div>
+
+    <div class="relative mx-auto max-w-7xl px-4 sm:px-6">
+      <!-- Texto (mitad izquierda) -->
+      <div class="py-14 lg:flex lg:min-h-[32rem] lg:w-1/2 lg:flex-col lg:justify-center lg:py-16 lg:pr-12">
+        <div class="max-w-xl reveal">
+          <h2 id="legacy-h" class="font-display text-3xl leading-tight sm:text-4xl lg:text-5xl">We grow a legacy, one harvest at a time.</h2>
+          <p class="mt-5 text-lg leading-relaxed text-tierra-suave">We put our name behind the work. Honor the land, do it right, and earn the trust of the growers who depend on us. That is how we believe great wine begins, in a vineyard cultivated with pride.</p>
+          <p class="mt-6 font-display text-2xl text-white">From the earth, a legacy is born.</p>
+          <?php /* TODO(Daniel): [CONFIRMAR] año real de fundación e historia de origen de Octavio Garcia para profundizar esta sección. */ ?>
+          <a href="/about" class="mt-8 inline-flex items-center gap-2 rounded-md border border-white/40 px-6 py-3 font-bold text-white transition-colors hover:bg-white hover:text-raiz-profunda focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-raiz-profunda">
+            Read our story
+            <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
       </div>
-      <!-- Imagen (derecha). URL desde $img_legacy_side. -->
-      <div class="reveal">
-        <div class="aspect-[4/5] w-full overflow-hidden rounded-2xl border border-white/15 bg-noche-vinedo/40 bg-cover bg-center shadow-2xl" style="background-image:url('<?php echo esc_url($img_legacy_side); ?>')"></div>
+
+      <!-- Imagen en móvil (en desktop se usa la versión a sangre de arriba). -->
+      <div class="reveal pb-14 lg:hidden">
+        <div class="aspect-[4/3] w-full overflow-hidden rounded-2xl bg-noche-vinedo/40 bg-cover bg-center" style="background-image:url('<?php echo esc_url($img_legacy_side); ?>')"></div>
       </div>
     </div>
   </section>

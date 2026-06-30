@@ -6,12 +6,17 @@
    aprobado en el Home (dormancy→harvest). Reusa .reveal (home.js global).
    =========================================================== */ ?>
 
+<?php
+/* URL de la imagen del hero — pega la URL completa de la media library. */
+$img_hero = "/wp-content/uploads/2026/06/VineyardManagement-scaled.jpg";
+?>
+
 <main data-service class="font-sans text-raiz-profunda">
 
   <!-- =================== S1 · HERO =================== -->
   <section class="relative flex min-h-[55svh] items-end overflow-hidden bg-raiz-profunda text-white">
-    <!-- TODO(Daniel): foto del servicio -->
-    <div class="absolute inset-0 bg-cover bg-center" style="background-image:url('/wp-content/uploads/2026/06/vineyard-management.jpg')"></div>
+    <!-- Imagen del hero (URL desde $img_hero, definido arriba). -->
+    <div class="absolute inset-0 bg-cover bg-center" style="background-image:url('<?php echo esc_url($img_hero); ?>')"></div>
     <div class="absolute inset-0 bg-gradient-to-t from-raiz-profunda via-raiz-profunda/70 to-raiz-profunda/40"></div>
 
     <div class="relative z-10 mx-auto w-full max-w-7xl px-4 py-14 sm:px-6 lg:py-16">

@@ -67,7 +67,7 @@ function initCounters() {
   counters.forEach((el) => io.observe(el))
 }
 
-/* ---------- 3. Season cycle (slider <-> scroll) ---------- */
+/* ---------- 3. Season cycle (slider <-> scroll + auto-avance) ---------- */
 function initSeasonCycle() {
   const track = document.getElementById("season-track")
   const range = document.getElementById("season-range")
@@ -78,12 +78,16 @@ function initSeasonCycle() {
 
   let syncing = false
 
-  // range -> scroll
-  range.addEventListener("input", () => {
+  function goTo(idx) {
     syncing = true
-    const idx = parseInt(range.value, 10)
+    range.value = String(idx)
     track.scrollTo({ left: stages[idx].offsetLeft - track.offsetLeft, behavior: reduceMotion ? "auto" : "smooth" })
     window.setTimeout(() => (syncing = false), 400)
+  }
+
+  // range -> scroll
+  range.addEventListener("input", () => {
+    goTo(parseInt(range.value, 10))
   })
 
   // scroll -> range
@@ -101,6 +105,49 @@ function initSeasonCycle() {
     },
     { passive: true }
   )
+
+  // ---- Auto-avance (las cards se mueven solas) ----
+  if (reduceMotion) return // sin autoplay si el usuario prefiere menos movimiento
+
+  const section = track.closest("[data-season]") || track
+  const DELAY = 4500
+  let timer = null
+  let paused = false
+
+  function tick() {
+    if (paused) return
+    goTo((parseInt(range.value, 10) + 1) % stages.length)
+  }
+  function start() {
+    if (!timer) timer = window.setInterval(tick, DELAY)
+  }
+  function stop() {
+    if (timer) {
+      window.clearInterval(timer)
+      timer = null
+    }
+  }
+
+  // Pausa al pasar el cursor / enfocar / interactuar
+  section.addEventListener("pointerenter", () => (paused = true))
+  section.addEventListener("pointerleave", () => (paused = false))
+  section.addEventListener("focusin", () => (paused = true))
+  section.addEventListener("focusout", () => (paused = false))
+  range.addEventListener("input", () => {
+    stop()
+    start()
+  })
+
+  // Arranca solo cuando la sección está visible
+  if ("IntersectionObserver" in window) {
+    const io = new IntersectionObserver(
+      (entries) => entries.forEach((e) => (e.isIntersecting ? start() : stop())),
+      { threshold: 0.3 }
+    )
+    io.observe(section)
+  } else {
+    start()
+  }
 }
 
 /* ---------- 4. Parallax ---------- */
