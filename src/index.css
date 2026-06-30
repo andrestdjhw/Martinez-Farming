@@ -1,2 +1,104 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
+
+/* ============================================================
+   Martinez Farming — Design Tokens
+   Tailwind v4 @theme: cada token genera utilidades automáticas
+   (ej. --color-raiz-profunda  ->  bg-raiz-profunda / text-raiz-profunda)
+   ============================================================ */
+@theme {
+  /* Paleta del manual de identidad */
+  --color-raiz-profunda: #543167; /* principal */
+  --color-noche-vinedo:  #41439b;
+  --color-lavanda-noble: #8f6bae;
+  --color-tierra-suave:  #bdbba6;
+  --color-olivar-vivo:   #a5a83d; /* acento / hover */
+
+  /* Tono derivado para profundidad (topbar oscuro / dropdown).
+     Token nombrado para no improvisar hex en el componente. */
+  --color-raiz-honda: #3a2248;
+
+  /* Variante honda de Noche de viñedo — barra inferior del footer. */
+  --color-noche-honda: #2c2e6e;
+
+  /* Tipografías. Marjorie = display (manual). Work Sans = UI/botones.
+     Marjorie es fuente con licencia del cliente: ver @font-face abajo. */
+  --font-display: "Marjorie", Georgia, "Times New Roman", serif;
+  --font-sans: "Work Sans", ui-sans-serif, system-ui, -apple-system, sans-serif;
+}
+
+/* Work Sans desde Google Fonts (libre).
+   Si prefieres self-host, descárgala y reemplaza por @font-face local. */
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap");
+
+/* TODO: Marjorie es comercial — coloca los archivos de fuente del cliente
+   en /assets/fonts/ y descomenta. Mientras tanto cae a Georgia (serif). */
+/*
+@font-face {
+  font-family: "Marjorie";
+  src: url("../assets/fonts/Marjorie-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+*/
+
+/* La nav es fixed: compensa el alto para que el contenido no quede debajo.
+   Ajusta el valor si cambias la altura de la barra. */
+body {
+  padding-top: 7rem; /* topbar (3rem) + nav (4rem). Ajustable. */
+}
+
+/* --- Animaciones del Home (manejadas por src/scripts/home.js) --- */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+.parallax-bg {
+  will-change: transform;
+}
+/* Mapa de condados — iluminar al hover */
+.county {
+  transition: fill-opacity 0.25s ease, fill 0.25s ease;
+  cursor: pointer;
+}
+.county:hover {
+  fill: #a5a83d; /* olivar vivo */
+  fill-opacity: 0.55;
+}
+/* Ocultar scrollbar del season track (el control es el slider) */
+.season-track {
+  scrollbar-width: none;
+}
+.season-track::-webkit-scrollbar {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .parallax-bg {
+    transform: none !important;
+  }
+}
+
+/* --- Admin bar de WordPress (solo en desarrollo / con sesión) ---
+   La admin bar es fixed y tapa el topbar. WP añade .admin-bar al <body>
+   únicamente cuando hay sesión, así que esto NO afecta a los visitantes.
+   Empujamos el header hacia abajo la altura de la admin bar. */
+.admin-bar header {
+  top: 32px;
+}
+@media screen and (max-width: 782px) {
+  .admin-bar header {
+    top: 46px; /* la admin bar mide 46px en pantallas <783px */
+  }
+}
