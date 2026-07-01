@@ -9,6 +9,13 @@
 <?php
 /* URL de la imagen del hero — pega la URL completa de la media library. */
 $img_hero = "/wp-content/uploads/2026/06/GeneralLabors-scaled.jpeg";
+
+/* Imágenes de las cards de estándares (opcional). Pega la URL de la media library;
+   si la dejas vacía, la card muestra un degradado de marca con el ícono. */
+$img_std_reliable    = '/wp-content/uploads/2026/06/Reliable-scaled.jpg';
+$img_std_supervised  = '/wp-content/uploads/2026/06/Supervised-scaled.jpg';
+$img_std_responsible = '/wp-content/uploads/2026/07/Responsible-scaled.jpg';
+$img_std_direct      = '/wp-content/uploads/2026/06/Direct-scaled.jpg';
 ?>
 
 <main data-service class="font-sans text-raiz-profunda">
@@ -56,7 +63,7 @@ $img_hero = "/wp-content/uploads/2026/06/GeneralLabors-scaled.jpeg";
           <ul class="mt-4 space-y-3 text-stone-700">
             <?php
               // Términos aprobados (del ciclo de temporada). Ejemplos, no lista exhaustiva.
-              $tasks = ['Pruning', 'Canopy and shoot work', 'Hand harvesting'];
+              $tasks = ['Pruning', 'Canopy and shoot work', 'Suckering and shoot thinning', 'Leaf removal', 'Trellising and wire work', 'Vineyard floor and weed management', 'Crop thinning', 'Hand harvesting'];
               foreach ($tasks as $t): ?>
               <li class="flex items-start gap-2.5">
                 <svg class="mt-0.5 h-5 w-5 shrink-0 text-olivar-vivo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
@@ -72,25 +79,42 @@ $img_hero = "/wp-content/uploads/2026/06/GeneralLabors-scaled.jpeg";
   </section>
 
   <!-- =================== S3 · STANDARDS =================== -->
-  <section aria-labelledby="std-h" class="bg-raiz-profunda text-white">
-    <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:py-20">
+  <section aria-labelledby="std-h" class="relative isolate overflow-hidden bg-[#090a0f] text-white">
+    <!-- Fondo de estrellas animado (.season-sky, definido en index.css) -->
+    <div class="season-sky -z-10" aria-hidden="true">
+      <div id="season-stars"></div>
+      <div id="season-stars2"></div>
+      <div id="season-stars3"></div>
+    </div>
+    <div class="relative mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:py-20">
       <div class="max-w-3xl reveal">
         <h2 id="std-h" class="font-display text-2xl sm:text-3xl">Every crew, the same standard.</h2>
       </div>
-      <div class="mt-10 grid gap-x-8 gap-y-6 border-t border-white/10 pt-8 sm:grid-cols-2 lg:grid-cols-4">
-        <?php
-          $points = [
-            ['Reliable', 'On time, every season.'],
-            ['Supervised', 'Real leadership on every team.'],
-            ['Responsible', 'Respect for land and people.'],
-            ['Direct', 'You talk to the people doing the work.'],
-          ];
-          foreach ($points as $p): ?>
-          <div class="reveal">
-            <h3 class="font-display text-lg text-olivar-vivo"><?php echo esc_html($p[0]); ?></h3>
-            <p class="mt-1 text-sm text-tierra-suave"><?php echo esc_html($p[1]); ?></p>
+      <div class="mt-10 reveal border-t border-white/10 pt-10">
+        <div class="marquee">
+          <div class="marquee-track">
+            <?php
+              // Estándares (copy aprobado) + ícono por cada uno.
+              $points = [
+                ['Reliable', 'On time, every season.', $img_std_reliable],
+                ['Supervised', 'Real leadership on every team.', $img_std_supervised],
+                ['Responsible', 'Respect for land and people.', $img_std_responsible],
+                ['Direct', 'You talk to the people doing the work.', $img_std_direct],
+              ];
+              // Repetimos el set dos veces para un loop continuo y sin saltos.
+              for ($rep = 0; $rep < 2; $rep++):
+                foreach ($points as $p): ?>
+                <article class="mr-6 w-80 shrink-0 overflow-hidden rounded-2xl border border-white/10 bg-white/5"<?php echo $rep === 1 ? ' aria-hidden="true"' : ''; ?>>
+                  <!-- Imagen (opcional, $p[3]); si está vacía muestra un degradado de marca. -->
+                  <div class="aspect-[4/3] overflow-hidden bg-gradient-to-br from-noche-vinedo to-raiz-profunda bg-cover bg-center"<?php if ($p[2]): ?> style="background-image:url('<?php echo esc_url($p[2]); ?>')"<?php endif; ?>></div>
+                  <div class="p-6">
+                    <h3 class="font-display text-xl text-olivar-vivo"><?php echo esc_html($p[0]); ?></h3>
+                    <p class="mt-1.5 text-sm leading-relaxed text-tierra-suave"><?php echo esc_html($p[1]); ?></p>
+                  </div>
+                </article>
+              <?php endforeach; endfor; ?>
           </div>
-        <?php endforeach; ?>
+        </div>
       </div>
     </div>
   </section>

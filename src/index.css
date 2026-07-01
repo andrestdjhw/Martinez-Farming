@@ -2150,3 +2150,19 @@ body {
 @media (prefers-reduced-motion: reduce) {
   #season-stars, #season-stars2, #season-stars3 { animation: none; }
 }
+
+/* ===========================================================
+   Marquee horizontal de cards (estándares de servicio).
+   Loop continuo izquierda -> derecha; pausa al hover; respeta reduce-motion.
+   =========================================================== */
+.marquee { overflow: hidden; -webkit-mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent); mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent); }
+.marquee-track { display: flex; width: max-content; animation: marquee-ltr 36s linear infinite; }
+.marquee:hover .marquee-track, .marquee:focus-within .marquee-track { animation-play-state: paused; }
+@keyframes marquee-ltr {
+  from { transform: translateX(-50%); }
+  to   { transform: translateX(0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track { animation: none; }
+  .marquee { overflow-x: auto; -webkit-mask-image: none; mask-image: none; }
+}

@@ -9,6 +9,13 @@
 <?php
 /* URL de la imagen del hero — pega la URL completa de la media library. */
 $img_hero = "/wp-content/uploads/2026/06/VineyardManagement-scaled.jpg";
+
+/* Imágenes de las cards de etapas (opcional). Pega la URL de la media library;
+   si la dejas vacía, la card muestra un degradado de marca. */
+$img_stage_dormancy = '/wp-content/uploads/2026/07/DormancyManagement01.png'; // TODO(Daniel): Dormancy
+$img_stage_budbreak = '/wp-content/uploads/2026/07/BudbreakManagement02.png'; // TODO(Daniel): Bud break
+$img_stage_veraison = '/wp-content/uploads/2026/07/VeraisonManagement03.png'; // TODO(Daniel): Veraison
+$img_stage_harvest  = '/wp-content/uploads/2026/07/HarvestManagement04.png'; // TODO(Daniel): Harvest
 ?>
 
 <main data-service class="font-sans text-raiz-profunda">
@@ -51,27 +58,48 @@ $img_hero = "/wp-content/uploads/2026/06/VineyardManagement-scaled.jpg";
   </section>
 
   <!-- =================== S3 · SEASON STAGES =================== -->
-  <section aria-labelledby="stages-h" class="bg-stone-50">
-    <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:py-20">
-      <h2 id="stages-h" class="reveal font-display text-2xl text-raiz-profunda sm:text-3xl">Through every stage of the season</h2>
-      <div class="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-        <?php
-          // Etapas aprobadas (ciclo de temporada del Home).
-          $stages = [
-            ['Dormancy', 'Pruning strategy that sets the season up right.'],
-            ['Bud break', 'Canopy and shoot work for healthy, balanced growth.'],
-            ['Veraison', 'Irrigation and pest monitoring dialed to the fruit.'],
-            ['Harvest', 'Careful hand harvesting and clean post harvest work.'],
-          ];
-          foreach ($stages as $i => $st): ?>
-          <div class="reveal rounded-xl border border-stone-200 bg-white p-6">
-            <span class="font-display text-sm text-olivar-vivo"><?php echo sprintf('%02d', $i + 1); ?></span>
-            <h3 class="mt-2 font-display text-xl text-raiz-profunda"><?php echo esc_html($st[0]); ?></h3>
-            <p class="mt-1.5 text-sm text-stone-600"><?php echo esc_html($st[1]); ?></p>
-          </div>
-        <?php endforeach; ?>
+  <section aria-labelledby="stages-h" class="relative isolate overflow-hidden bg-[#090a0f] text-white">
+    <!-- Fondo de estrellas animado (.season-sky, definido en index.css) -->
+    <div class="season-sky -z-10" aria-hidden="true">
+      <div id="season-stars"></div>
+      <div id="season-stars2"></div>
+      <div id="season-stars3"></div>
+    </div>
+    <div class="relative mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:py-24">
+      <div class="max-w-3xl reveal">
+        <p class="text-xs font-bold uppercase tracking-[0.22em] text-olivar-vivo">All season</p>
+        <h2 id="stages-h" class="mt-2 font-display text-3xl text-white sm:text-4xl">Through every stage of the season.</h2>
+        <p class="mt-4 text-lg text-tierra-suave">From dormancy to harvest, every stage gets the same attention and the same standard.</p>
       </div>
-      <!-- TODO(Daniel): [CONFIRMAR] tareas específicas de manejo dentro de cada etapa si hay copy aprobado. -->
+      <div class="mt-12 marquee reveal">
+        <div class="marquee-track">
+          <?php
+            // Etapas aprobadas (ciclo de temporada). TODO(Daniel): [CONFIRMAR] tareas específicas de cada etapa.
+            $stages = [
+              ['Dormancy', 'Pruning strategy that sets the season up right.', $img_stage_dormancy],
+              ['Bud break', 'Canopy and shoot work for healthy, balanced growth.', $img_stage_budbreak],
+              ['Veraison', 'Irrigation and pest monitoring dialed to the fruit.', $img_stage_veraison],
+              ['Harvest', 'Careful hand harvesting and clean post harvest work.', $img_stage_harvest],
+            ];
+            // Repetimos el set dos veces para un loop continuo y sin saltos.
+            for ($rep = 0; $rep < 2; $rep++):
+              foreach ($stages as $i => $st): ?>
+              <article class="relative mr-6 h-[28rem] w-80 shrink-0 overflow-hidden rounded-2xl border border-white/10"<?php echo $rep === 1 ? ' aria-hidden="true"' : ''; ?>>
+                <!-- Foto de fondo (opcional, $st[2]); si está vacía muestra un degradado de marca. -->
+                <div class="absolute inset-0 bg-gradient-to-br from-noche-vinedo to-raiz-profunda bg-cover bg-center"<?php if ($st[2]): ?> style="background-image:url('<?php echo esc_url($st[2]); ?>')"<?php endif; ?>></div>
+                <!-- Degradado para legibilidad del texto -->
+                <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/45 to-transparent"></div>
+                <!-- Texto encima de la foto -->
+                <div class="relative flex h-full flex-col justify-end p-6">
+                  <span class="font-display text-5xl leading-none text-olivar-vivo"><?php echo sprintf('%02d', $i + 1); ?></span>
+                  <h3 class="mt-3 font-display text-2xl text-white"><?php echo esc_html($st[0]); ?></h3>
+                  <p class="mt-2 text-sm leading-relaxed text-white/85"><?php echo esc_html($st[1]); ?></p>
+                </div>
+              </article>
+            <?php endforeach; endfor; ?>
+        </div>
+      </div>
+      <p class="mt-6 reveal text-xs text-tierra-suave/50">[ CONFIRMAR: tareas específicas de manejo dentro de cada etapa con el cliente. ]</p>
     </div>
   </section>
 
