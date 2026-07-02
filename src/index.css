@@ -2166,3 +2166,46 @@ body {
   .marquee-track { animation: none; }
   .marquee { overflow-x: auto; -webkit-mask-image: none; mask-image: none; }
 }
+
+/* ===========================================================
+   Shine effect (barrido de brillo) para las cards de valores.
+   Barrido periódico y escalonado; se desactiva con reduce-motion.
+   =========================================================== */
+.shine { position: relative; overflow: hidden; }
+.shine::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent 0%, rgba(255,255,255,0.30) 50%, transparent 100%);
+  transform: skewX(-20deg);
+  animation: shine-sweep 6s ease-in-out infinite;
+  pointer-events: none;
+}
+.values-grid .shine:nth-child(3n)::after   { animation-delay: 2s; }
+.values-grid .shine:nth-child(3n+1)::after { animation-delay: 4s; }
+@keyframes shine-sweep {
+  0%, 55%, 100% { left: -150%; }
+  78%           { left: 150%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .shine::after { animation: none; }
+}
+
+/* ===========================================================
+   Marquee de valores (About): dos filas en direcciones opuestas.
+   Fila superior -> izquierda; fila inferior -> derecha.
+   =========================================================== */
+.vmarquee { overflow: hidden; -webkit-mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent); mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent); }
+.vmarquee-track { display: flex; width: max-content; }
+.vmarquee-left  { animation: vmarquee-left 32s linear infinite; }
+.vmarquee-right { animation: vmarquee-right 32s linear infinite; }
+.vmarquee:hover .vmarquee-track, .vmarquee:focus-within .vmarquee-track { animation-play-state: paused; }
+@keyframes vmarquee-left  { from { transform: translateX(0); }     to { transform: translateX(-50%); } }
+@keyframes vmarquee-right { from { transform: translateX(-50%); }  to { transform: translateX(0); } }
+@media (prefers-reduced-motion: reduce) {
+  .vmarquee-track { animation: none; }
+  .vmarquee { overflow-x: auto; -webkit-mask-image: none; mask-image: none; }
+}
