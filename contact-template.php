@@ -22,8 +22,14 @@
   </section>
 
   <!-- =================== S2 · INFO + FORM =================== -->
-  <section aria-label="Contact details and form" class="bg-white">
-    <div class="mx-auto grid max-w-7xl gap-12 px-4 py-16 sm:px-6 lg:grid-cols-2 lg:gap-16 lg:py-20">
+  <section aria-label="Contact details and form" class="relative isolate overflow-hidden bg-white">
+    <!-- Estampado de fondo -->
+    <div
+      aria-hidden="true"
+      class="pointer-events-none absolute inset-0 bg-repeat"
+      style="background-image:url('/wp-content/uploads/2026/06/Estampados-MF_8-scaled.png'); background-size:auto 200px; opacity:0.06"
+    ></div>
+    <div class="relative mx-auto grid max-w-7xl gap-12 px-4 py-16 sm:px-6 lg:grid-cols-2 lg:gap-16 lg:py-20">
 
       <!-- Columna izquierda: info de contacto -->
       <div class="reveal">
@@ -56,7 +62,7 @@
             </span>
             <div>
               <dt class="text-sm font-medium uppercase tracking-wider text-stone-500">Location</dt>
-              <dd class="mt-0.5 text-lg text-raiz-profunda">Paso Robles, California</dd>
+              <dd class="mt-0.5"><a href="https://www.google.com/maps/search/?api=1&query=1660+Circle+B+Rd+Paso+Robles+CA+93446" target="_blank" rel="noopener noreferrer" class="text-lg text-raiz-profunda hover:text-noche-vinedo">1660 Circle B Rd, Paso Robles, CA 93446</a></dd>
               <dd class="mt-1 text-sm text-stone-500">Serving San Luis Obispo, Monterey, and Santa Barbara Counties</dd>
             </div>
           </div>
@@ -68,11 +74,9 @@
           <div class="mt-3 flex items-center gap-2">
             <?php
               $socials = [
-                ['Instagram', 'https://instagram.com/martinez_farming', '<rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>'],
-                ['Facebook', 'https://facebook.com/MartinezFarming', '<path d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.78-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.44 2.89h-2.34v6.99A10 10 0 0 0 22 12Z" fill="currentColor" stroke="none"/>'],
-                ['YouTube', 'https://youtube.com/@MartinezFarmingLLC', '<path d="M23 12s0-3.2-.41-4.74a2.5 2.5 0 0 0-1.76-1.77C19.3 5.08 12 5.08 12 5.08s-7.3 0-8.83.41a2.5 2.5 0 0 0-1.76 1.77C1 8.8 1 12 1 12s0 3.2.41 4.74a2.5 2.5 0 0 0 1.76 1.77c1.53.41 8.83.41 8.83.41s7.3 0 8.83-.41a2.5 2.5 0 0 0 1.76-1.77C23 15.2 23 12 23 12Zm-13 3.02V8.98L15.5 12 10 15.02Z" fill="currentColor" stroke="none"/>'],
-                // TODO(Daniel): URL de TikTok
-                ['TikTok', '#', '<path d="M16.5 3c.3 2.1 1.5 3.4 3.5 3.6v2.5c-1.2.1-2.4-.2-3.5-.8v6.1a5.6 5.6 0 1 1-5.6-5.6c.3 0 .6 0 .9.1v2.6a3 3 0 1 0 2.1 2.9V3h2.6Z" fill="currentColor" stroke="none"/>'],
+                ['Instagram', 'https://www.instagram.com/martinez_farming', '<rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>'],
+                ['Facebook', 'https://www.facebook.com/MartinezFarming/', '<path d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.78-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.44 2.89h-2.34v6.99A10 10 0 0 0 22 12Z" fill="currentColor" stroke="none"/>'],
+                ['YouTube', 'https://www.youtube.com/@MartinezFarmingLLC', '<path d="M23 12s0-3.2-.41-4.74a2.5 2.5 0 0 0-1.76-1.77C19.3 5.08 12 5.08 12 5.08s-7.3 0-8.83.41a2.5 2.5 0 0 0-1.76 1.77C1 8.8 1 12 1 12s0 3.2.41 4.74a2.5 2.5 0 0 0 1.76 1.77c1.53.41 8.83.41 8.83.41s7.3 0 8.83-.41a2.5 2.5 0 0 0 1.76-1.77C23 15.2 23 12 23 12Zm-13 3.02V8.98L15.5 12 10 15.02Z" fill="currentColor" stroke="none"/>'],
               ];
               foreach ($socials as $s): ?>
               <a href="<?php echo esc_url($s[1]); ?>" target="_blank" rel="noopener noreferrer" aria-label="<?php echo esc_attr($s[0]); ?>" class="grid h-10 w-10 place-items-center rounded-full bg-stone-100 text-raiz-profunda transition-colors hover:bg-olivar-vivo hover:text-raiz-profunda focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-olivar-vivo focus-visible:ring-offset-2">
@@ -93,15 +97,18 @@
   <!-- =================== S3 · MAPA =================== -->
   <section aria-label="Our location" class="bg-stone-50">
     <div class="mx-auto max-w-7xl px-4 pb-16 sm:px-6 lg:pb-20">
-      <!-- TODO(Daniel): pega el embed de Google Maps (iframe) de la oficina en Paso Robles.
-           Mientras tanto se muestra un placeholder. -->
+      <!-- Mapa de Google Maps de la oficina en Paso Robles.
+           TODO(Daniel): reemplaza el src por el embed real (Maps -> Compartir -> Insertar un mapa). -->
       <div class="reveal overflow-hidden rounded-2xl border border-stone-200">
-        <div class="grid aspect-[21/9] w-full place-items-center bg-tierra-suave/25 text-center">
-          <div class="px-6 text-stone-500">
-            <svg class="mx-auto h-8 w-8 text-raiz-profunda/50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
-            <p class="mt-2 text-sm">[ TODO: embed de Google Maps — Paso Robles, CA ]</p>
-          </div>
-        </div>
+        <iframe
+          src="https://www.google.com/maps?q=1660+Circle+B+Rd+Paso+Robles+CA+93446&output=embed"
+          title="Martinez Farming — Paso Robles, CA"
+          class="aspect-[21/9] w-full"
+          style="border:0"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          allowfullscreen
+        ></iframe>
       </div>
     </div>
   </section>

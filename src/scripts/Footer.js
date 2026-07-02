@@ -24,15 +24,14 @@ const CONTACT = {
   phoneHref: "tel:+18054239303",
   email: "martinezfarming@yahoo.com", // TODO: pendiente migrar a correo de dominio
   emailHref: "mailto:martinezfarming@yahoo.com",
-  location: "Paso Robles, CA",
-  mapsHref: "#", // TODO(Daniel): enlace externo de Google Maps
+  location: "1660 Circle B Rd, Paso Robles, CA 93446",
+  mapsHref: "https://www.google.com/maps/search/?api=1&query=1660+Circle+B+Rd+Paso+Robles+CA+93446",
 }
 
 const SOCIALS = [
-  { name: "Instagram", href: "https://instagram.com/martinez_farming", icon: "instagram" },
-  { name: "Facebook", href: "https://facebook.com/MartinezFarming", icon: "facebook" },
-  { name: "YouTube", href: "https://youtube.com/@MartinezFarmingLLC", icon: "youtube" },
-  { name: "TikTok", href: "#", icon: "tiktok" }, // TODO(Daniel): URL de TikTok
+  { name: "Instagram", href: "https://www.instagram.com/martinez_farming", icon: "instagram" },
+  { name: "Facebook", href: "https://www.facebook.com/MartinezFarming/", icon: "facebook" },
+  { name: "YouTube", href: "https://www.youtube.com/@MartinezFarmingLLC", icon: "youtube" },
 ]
 
 const EXPLORE = [
@@ -126,7 +125,7 @@ function Footer() {
         {/* ---- Bloque superior ---- */}
         <div className="grid gap-10 py-14 sm:grid-cols-2 lg:grid-cols-12 lg:gap-8">
           {/* Marca */}
-          <div className="lg:col-span-5">
+          <div className="lg:col-span-4">
             <a href="/" className="group inline-flex rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-olivar-vivo focus-visible:ring-offset-2 focus-visible:ring-offset-noche-vinedo" aria-label="Martinez Farming — inicio">
               {/* Imagotipo secundario (versión clara para fondo oscuro). */}
               <img src={LOGO_URL} alt="Martinez Farming" className="h-12 w-auto transition-opacity group-hover:opacity-90" />
@@ -184,7 +183,7 @@ function Footer() {
           </nav>
 
           {/* Contacto */}
-          <div className="lg:col-span-2">
+          <div className="lg:col-span-3">
             <ColHeading>Reach us</ColHeading>
             <ul className="flex flex-col gap-3 text-sm text-tierra-suave/85">
               <li>
@@ -193,7 +192,7 @@ function Footer() {
                 </a>
               </li>
               <li>
-                <a href={CONTACT.emailHref} className="group inline-flex items-center gap-2.5 break-all transition-colors hover:text-white focus-visible:text-white focus-visible:outline-none">
+                <a href={CONTACT.emailHref} className="group inline-flex items-center gap-2.5 break-words transition-colors hover:text-white focus-visible:text-white focus-visible:outline-none">
                   <Icon name="mail" className="h-4 w-4 shrink-0 text-olivar-vivo" /> {CONTACT.email}
                 </a>
               </li>

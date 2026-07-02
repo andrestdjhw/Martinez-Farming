@@ -1054,27 +1054,22 @@ const CONTACT = {
   email: "martinezfarming@yahoo.com",
   // TODO: pendiente migrar a correo de dominio
   emailHref: "mailto:martinezfarming@yahoo.com",
-  location: "Paso Robles, CA",
-  mapsHref: "#" // TODO(Daniel): enlace externo de Google Maps
+  location: "1660 Circle B Rd, Paso Robles, CA 93446",
+  mapsHref: "https://www.google.com/maps/search/?api=1&query=1660+Circle+B+Rd+Paso+Robles+CA+93446"
 };
 const SOCIALS = [{
   name: "Instagram",
-  href: "https://instagram.com/martinez_farming",
+  href: "https://www.instagram.com/martinez_farming",
   icon: "instagram"
 }, {
   name: "Facebook",
-  href: "https://facebook.com/MartinezFarming",
+  href: "https://www.facebook.com/MartinezFarming/",
   icon: "facebook"
 }, {
   name: "YouTube",
-  href: "https://youtube.com/@MartinezFarmingLLC",
+  href: "https://www.youtube.com/@MartinezFarmingLLC",
   icon: "youtube"
-}, {
-  name: "TikTok",
-  href: "#",
-  icon: "tiktok"
-} // TODO(Daniel): URL de TikTok
-];
+}];
 const EXPLORE = [{
   label: "Home",
   href: "/"
@@ -1281,7 +1276,7 @@ function Footer() {
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
         className: "grid gap-10 py-14 sm:grid-cols-2 lg:grid-cols-12 lg:gap-8",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-          className: "lg:col-span-5",
+          className: "lg:col-span-4",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("a", {
             href: "/",
             className: "group inline-flex rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-olivar-vivo focus-visible:ring-offset-2 focus-visible:ring-offset-noche-vinedo",
@@ -1349,7 +1344,7 @@ function Footer() {
             }, s.name))
           })]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-          className: "lg:col-span-2",
+          className: "lg:col-span-3",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(ColHeading, {
             children: "Reach us"
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("ul", {
@@ -1366,7 +1361,7 @@ function Footer() {
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("li", {
               children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("a", {
                 href: CONTACT.emailHref,
-                className: "group inline-flex items-center gap-2.5 break-all transition-colors hover:text-white focus-visible:text-white focus-visible:outline-none",
+                className: "group inline-flex items-center gap-2.5 break-words transition-colors hover:text-white focus-visible:text-white focus-visible:outline-none",
                 children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(Icon, {
                   name: "mail",
                   className: "h-4 w-4 shrink-0 text-olivar-vivo"
@@ -1462,30 +1457,25 @@ const CONTACT = {
   phoneHref: "tel:+18054239303",
   email: "martinezfarming@yahoo.com",
   emailHref: "mailto:martinezfarming@yahoo.com",
-  // TODO(Daniel): pega aquí el enlace externo de Google Maps que mencionaste.
-  mapsHref: "#",
+  // Enlace externo a Google Maps (dirección de la oficina).
+  mapsHref: "https://www.google.com/maps/search/?api=1&query=1660+Circle+B+Rd+Paso+Robles+CA+93446",
   mapsLabel: "Paso Robles, CA"
 };
 
-// Handles confirmados del cuestionario. TODO: confirmar URL de TikTok.
+// Handles confirmados (cuestionario). Sin TikTok.
 const SOCIALS = [{
   name: "Instagram",
-  href: "https://instagram.com/martinez_farming",
+  href: "https://www.instagram.com/martinez_farming",
   icon: "instagram"
 }, {
   name: "Facebook",
-  href: "https://facebook.com/MartinezFarming",
+  href: "https://www.facebook.com/MartinezFarming/",
   icon: "facebook"
 }, {
   name: "YouTube",
-  href: "https://youtube.com/@MartinezFarmingLLC",
+  href: "https://www.youtube.com/@MartinezFarmingLLC",
   icon: "youtube"
-}, {
-  name: "TikTok",
-  href: "#",
-  icon: "tiktok"
-} // TODO(Daniel): URL de TikTok
-];
+}];
 const NAV_LINKS = [{
   label: "Home",
   href: "/"
@@ -1791,9 +1781,9 @@ function Navbar() {
         })]
       })
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("nav", {
-      className: "border-b border-white/10 bg-raiz-profunda text-white shadow-[0_1px_24px_rgba(0,0,0,0.18)]",
+      className: `border-b border-white/10 bg-gradient-to-r text-white shadow-[0_1px_24px_rgba(0,0,0,0.18)] transition-[background-color,backdrop-filter] duration-300 ${topbarVisible ? "from-raiz-profunda to-noche-vinedo" : "from-raiz-profunda/80 to-noche-vinedo/80 backdrop-blur-md"}`,
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-        className: "mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6",
+        className: "mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("a", {
           href: "/",
           className: `group flex items-center ${ringDark}`,

@@ -46,7 +46,7 @@
 /* La nav es fixed: compensa el alto para que el contenido no quede debajo.
    Ajusta el valor si cambias la altura de la barra. */
 body {
-  padding-top: 7rem; /* topbar (3rem) + nav (4rem). Ajustable. */
+  padding-top: 8rem; /* topbar (3rem) + nav (5rem). Ajustable. */
 }
 
 /* --- Animaciones del Home (manejadas por src/scripts/home.js) --- */

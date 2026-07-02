@@ -22,17 +22,16 @@ const CONTACT = {
   phoneHref: "tel:+18054239303",
   email: "martinezfarming@yahoo.com",
   emailHref: "mailto:martinezfarming@yahoo.com",
-  // TODO(Daniel): pega aquí el enlace externo de Google Maps que mencionaste.
-  mapsHref: "#",
+  // Enlace externo a Google Maps (dirección de la oficina).
+  mapsHref: "https://www.google.com/maps/search/?api=1&query=1660+Circle+B+Rd+Paso+Robles+CA+93446",
   mapsLabel: "Paso Robles, CA",
 }
 
-// Handles confirmados del cuestionario. TODO: confirmar URL de TikTok.
+// Handles confirmados (cuestionario). Sin TikTok.
 const SOCIALS = [
-  { name: "Instagram", href: "https://instagram.com/martinez_farming", icon: "instagram" },
-  { name: "Facebook", href: "https://facebook.com/MartinezFarming", icon: "facebook" },
-  { name: "YouTube", href: "https://youtube.com/@MartinezFarmingLLC", icon: "youtube" },
-  { name: "TikTok", href: "#", icon: "tiktok" }, // TODO(Daniel): URL de TikTok
+  { name: "Instagram", href: "https://www.instagram.com/martinez_farming", icon: "instagram" },
+  { name: "Facebook", href: "https://www.facebook.com/MartinezFarming/", icon: "facebook" },
+  { name: "YouTube", href: "https://www.youtube.com/@MartinezFarmingLLC", icon: "youtube" },
 ]
 
 const NAV_LINKS = [
@@ -256,8 +255,14 @@ function Navbar() {
       </div>
 
       {/* ===================== NAV PRINCIPAL (siempre sólida) ===================== */}
-      <nav className="border-b border-white/10 bg-raiz-profunda text-white shadow-[0_1px_24px_rgba(0,0,0,0.18)]">
-        <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6">
+      <nav
+        className={`border-b border-white/10 bg-gradient-to-r text-white shadow-[0_1px_24px_rgba(0,0,0,0.18)] transition-[background-color,backdrop-filter] duration-300 ${
+          topbarVisible
+            ? "from-raiz-profunda to-noche-vinedo"
+            : "from-raiz-profunda/80 to-noche-vinedo/80 backdrop-blur-md"
+        }`}
+      >
+        <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6">
           {/* Logo / imagotipo secundario (versión clara para fondo oscuro). */}
           <a href="/" className={`group flex items-center ${ringDark}`} aria-label="Martinez Farming — inicio">
             <img
