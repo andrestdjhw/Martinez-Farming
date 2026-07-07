@@ -13,9 +13,9 @@
    Pega la URL completa del archivo en la media library de WordPress
    (Biblioteca de medios -> abre la imagen -> copia la "URL del archivo").
    ----------------------------------------------------------- */
-$img_general_labor          = '/wp-content/uploads/2026/06/GeneralLabors-scaled.jpeg';
-$img_vineyard_installations = '/wp-content/uploads/2026/06/VineyardInstallations-scaled.jpg';
-$img_vineyard_management    = '/wp-content/uploads/2026/06/VineyardManagement-scaled.jpg';
+$img_general_labor          = '/wp-content/uploads/2026/07/GeneralLaborMain-scaled.webp';
+$img_vineyard_installations = '/wp-content/uploads/2026/07/VineyarInstallationsMain-1-scaled.webp';
+$img_vineyard_management    = '/wp-content/uploads/2026/07/VineyardManagementMain-scaled.webp';
 $img_consulting             = '/wp-content/uploads/2026/06/Consultation-scaled.jpg';
 
 /* Otras imágenes del Home — pega la URL completa de la media library. */
@@ -90,13 +90,14 @@ $img_legacy_side = '/wp-content/uploads/2026/06/LegacyMF-scaled.jpg';
       <div class="mt-14 grid grid-cols-2 gap-8 border-t border-white/10 pt-10 lg:grid-cols-4">
         <!-- TODO(Daniel): # acres bajo manejo -->
         <div class="reveal">
-          <div class="font-display text-5xl text-olivar-vivo sm:text-6xl">&mdash;</div>
-          <p class="mt-2 text-sm text-tierra-suave">Acres under management<span class="mt-0.5 block text-xs text-tierra-suave/50">figure to confirm</span></p>
+          <!-- +3,000 Acres -->
+          <div class="font-display text-5xl text-olivar-vivo sm:text-6xl"><span data-counter data-target="3,000">0</span></div>
+          <p class="mt-2 text-sm text-tierra-suave">Acres under management<span class="mt-0.5 block text-xs text-tierra-suave/50"></span></p>
         </div>
         <!-- TODO(Daniel): # de personas en cuadrillas -->
         <div class="reveal">
           <div class="font-display text-5xl text-olivar-vivo sm:text-6xl">&mdash;</div>
-          <p class="mt-2 text-sm text-tierra-suave">People on our crews<span class="mt-0.5 block text-xs text-tierra-suave/50">figure to confirm</span></p>
+          <p class="mt-2 text-sm text-tierra-suave">People on our crews<span class="mt-0.5 block text-xs text-tierra-suave/50"></span></p>
         </div>
         <!-- Real -->
         <div class="reveal">
@@ -106,7 +107,7 @@ $img_legacy_side = '/wp-content/uploads/2026/06/LegacyMF-scaled.jpg';
         <!-- TODO(Daniel): # años en la Central Coast -->
         <div class="reveal">
           <div class="font-display text-5xl text-olivar-vivo sm:text-6xl">&mdash;</div>
-          <p class="mt-2 text-sm text-tierra-suave">Years on the Central Coast<span class="mt-0.5 block text-xs text-tierra-suave/50">figure to confirm</span></p>
+          <p class="mt-2 text-sm text-tierra-suave">Years on the Central Coast<span class="mt-0.5 block text-xs text-tierra-suave/50"></span></p>
         </div>
       </div>
     </div>

@@ -7,6 +7,16 @@
    Imágenes con TODO: súbelas a la media library y reemplaza las rutas.
    =========================================================== */ ?>
 
+<?php
+/* -----------------------------------------------------------
+   URLs de imágenes (media library de WordPress). Edita aquí, en un solo lugar.
+   Pega la URL completa del archivo (Biblioteca de medios -> abre la imagen -> "URL del archivo").
+   ----------------------------------------------------------- */
+$img_hero       = '/wp-content/uploads/2026/07/MartinezFamilyHero.png'; // TODO(Daniel): imagen editorial del equipo/viñedo (hero del About)
+$img_octavio    = ''; // TODO(Daniel): foto de Octavio Garcia (liderazgo)
+$img_award_seal = '/wp-content/uploads/2026/06/Martinez-Farming_Sello.png'; // sello del premio
+?>
+
 <main data-about class="font-sans text-raiz-profunda">
 
   <!-- =================== S1 · HEADER =================== -->
@@ -19,8 +29,8 @@
           Martinez Farming is a family owned business born in Paso Robles, California, devoted to agricultural excellence in the premium wine sector. We bring specialized vineyard labor to wineries and winegrowers, combining technical precision, sustainability, and human pride. We grow more than grapes, we grow legacy.
         </p>
       </div>
-      <!-- TODO(Daniel): imagen editorial del equipo o del viñedo -->
-      <div class="reveal mt-12 aspect-[21/9] w-full overflow-hidden rounded-2xl bg-noche-vinedo/30 bg-cover bg-center" style="background-image:url('/wp-content/uploads/2026/06/about-hero.jpg')"></div>
+      <!-- Imagen editorial (URL desde $img_hero, definido arriba). -->
+      <div class="reveal mt-12 aspect-[21/9] w-full overflow-hidden rounded-2xl bg-noche-vinedo/30 bg-cover bg-center" style="background-image:url('<?php echo esc_url($img_hero); ?>')"></div>
     </div>
   </section>
 
@@ -144,8 +154,8 @@
     <div class="mx-auto grid max-w-7xl items-center gap-12 px-4 py-20 sm:px-6 lg:grid-cols-12 lg:py-24">
       <!-- Foto -->
       <div class="reveal lg:col-span-5">
-        <!-- TODO(Daniel): foto de Octavio Garcia -->
-        <div class="aspect-[4/5] w-full overflow-hidden rounded-2xl bg-tierra-suave/40 bg-cover bg-center" style="background-image:url('/wp-content/uploads/2026/06/octavio-garcia.jpg')"></div>
+        <!-- Foto de Octavio (URL desde $img_octavio, definido arriba). -->
+        <div class="aspect-[4/5] w-full overflow-hidden rounded-2xl bg-tierra-suave/40 bg-cover bg-center" style="background-image:url('<?php echo esc_url($img_octavio); ?>')"></div>
       </div>
       <!-- Bio -->
       <div class="reveal lg:col-span-7">
@@ -166,8 +176,14 @@
   <!-- =================== S6 · AWARD =================== -->
   <section aria-labelledby="award-h" class="overflow-hidden bg-tierra-suave/20">
     <div class="mx-auto grid max-w-7xl items-center gap-10 px-4 py-20 sm:px-6 lg:grid-cols-12 lg:py-24">
+      <!-- Texto (izquierda) -->
+      <div class="reveal lg:col-span-7 lg:pr-6">
+        <p class="text-xs font-bold uppercase tracking-[0.22em] text-olivar-vivo">Recognition</p>
+        <h2 id="award-h" class="mt-2 font-display text-3xl text-raiz-profunda sm:text-4xl lg:text-5xl">Recognized for the work we put in the ground.</h2>
+        <p class="mt-5 max-w-xl text-lg text-stone-700">We are proud to be named the 2026 San Luis Obispo County Winegrape Grower of the Year. It reflects the honest work, the skilled hands, and the standards we bring to every vineyard we touch.</p>
+      </div>
+      <!-- Sello (derecha) -->
       <div class="reveal lg:col-span-5">
-        <?php $img_award_seal = '/wp-content/uploads/2026/06/Martinez-Farming_Sello.png'; ?>
         <div class="grid aspect-square w-full place-items-center overflow-hidden rounded-2xl border border-raiz-profunda/10 bg-raiz-profunda p-8 text-center sm:p-10">
           <?php if ( $img_award_seal ) : ?>
             <img src="<?php echo esc_url($img_award_seal); ?>" alt="2026 San Luis Obispo County Winegrape Grower of the Year — Martinez Farming" class="h-full w-full object-contain" loading="lazy" />
@@ -178,11 +194,6 @@
             </div>
           <?php endif; ?>
         </div>
-      </div>
-      <div class="reveal lg:col-span-7 lg:pl-6">
-        <p class="text-xs font-bold uppercase tracking-[0.22em] text-olivar-vivo">Recognition</p>
-        <h2 id="award-h" class="mt-2 font-display text-3xl text-raiz-profunda sm:text-4xl lg:text-5xl">Recognized for the work we put in the ground.</h2>
-        <p class="mt-5 max-w-xl text-lg text-stone-700">We are proud to be named the 2026 San Luis Obispo County Winegrape Grower of the Year. It reflects the honest work, the skilled hands, and the standards we bring to every vineyard we touch.</p>
       </div>
     </div>
   </section>
