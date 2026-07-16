@@ -32,10 +32,10 @@ function initCounters() {
   if (!counters.length) return
 
   const run = (el) => {
-    const target = parseInt(el.getAttribute("data-target"), 10)
+    const target = parseInt(el.getAttribute("data-target").replace(/,/g, ""), 10)
     if (isNaN(target)) return
     if (reduceMotion) {
-      el.textContent = String(target)
+      el.textContent = target.toLocaleString()
       return
     }
     const duration = 1400
@@ -43,7 +43,7 @@ function initCounters() {
     const tick = (now) => {
       const p = Math.min((now - start) / duration, 1)
       const eased = 1 - Math.pow(1 - p, 3) // easeOutCubic
-      el.textContent = String(Math.round(eased * target))
+      el.textContent = Math.round(eased * target).toLocaleString()
       if (p < 1) requestAnimationFrame(tick)
     }
     requestAnimationFrame(tick)
@@ -68,55 +68,45 @@ function initCounters() {
 }
 
 /* ---------- 3. Season cycle (slider <-> scroll + auto-avance) ---------- */
-function initSeasonCycle() {
-  const track = document.getElementById("season-track")
-  const range = document.getElementById("season-range")
-  if (!track || !range) return
+/* ---------- 3. Season "blades" (acordeón + auto-rotación) ---------- */
+function initSeasonBlades() {
+  const wrap = document.getElementById("season-blades")
+  if (!wrap) return
+  const blades = Array.from(wrap.querySelectorAll("[data-blade]"))
+  const dots = Array.from(document.querySelectorAll("[data-blade-dot]"))
+  if (!blades.length) return
 
-  const stages = track.querySelectorAll(".season-stage")
-  if (!stages.length) return
+  let active = 0
 
-  let syncing = false
-
-  function goTo(idx) {
-    syncing = true
-    range.value = String(idx)
-    track.scrollTo({ left: stages[idx].offsetLeft - track.offsetLeft, behavior: reduceMotion ? "auto" : "smooth" })
-    window.setTimeout(() => (syncing = false), 400)
+  function setActive(idx) {
+    active = idx
+    blades.forEach((b, i) => {
+      const on = i === idx
+      b.classList.toggle("is-active", on)
+      b.setAttribute("aria-expanded", on ? "true" : "false")
+    })
+    dots.forEach((d, i) => {
+      d.classList.toggle("bg-olivar-vivo", i === idx)
+      d.classList.toggle("bg-white/20", i !== idx)
+    })
   }
 
-  // range -> scroll
-  range.addEventListener("input", () => {
-    goTo(parseInt(range.value, 10))
+  blades.forEach((b, i) => {
+    b.addEventListener("pointerenter", () => setActive(i))
+    b.addEventListener("focus", () => setActive(i))
+    b.addEventListener("click", () => setActive(i))
   })
 
-  // scroll -> range
-  let ticking = false
-  track.addEventListener(
-    "scroll",
-    () => {
-      if (syncing || ticking) return
-      ticking = true
-      requestAnimationFrame(() => {
-        const idx = Math.round(track.scrollLeft / track.clientWidth)
-        if (String(idx) !== range.value) range.value = String(idx)
-        ticking = false
-      })
-    },
-    { passive: true }
-  )
+  // ---- Auto-rotación (las estaciones se apilan solas) ----
+  if (reduceMotion) return
 
-  // ---- Auto-avance (las cards se mueven solas) ----
-  if (reduceMotion) return // sin autoplay si el usuario prefiere menos movimiento
-
-  const section = track.closest("[data-season]") || track
-  const DELAY = 4500
+  const section = wrap.closest("[data-season]") || wrap
+  const DELAY = 4000
   let timer = null
   let paused = false
 
   function tick() {
-    if (paused) return
-    goTo((parseInt(range.value, 10) + 1) % stages.length)
+    if (!paused) setActive((active + 1) % blades.length)
   }
   function start() {
     if (!timer) timer = window.setInterval(tick, DELAY)
@@ -128,17 +118,11 @@ function initSeasonCycle() {
     }
   }
 
-  // Pausa al pasar el cursor / enfocar / interactuar
   section.addEventListener("pointerenter", () => (paused = true))
   section.addEventListener("pointerleave", () => (paused = false))
   section.addEventListener("focusin", () => (paused = true))
   section.addEventListener("focusout", () => (paused = false))
-  range.addEventListener("input", () => {
-    stop()
-    start()
-  })
 
-  // Arranca solo cuando la sección está visible
   if ("IntersectionObserver" in window) {
     const io = new IntersectionObserver(
       (entries) => entries.forEach((e) => (e.isIntersecting ? start() : stop())),
@@ -183,7 +167,7 @@ function initParallax() {
 function initHome() {
   initReveals()
   initCounters()
-  initSeasonCycle()
+  initSeasonBlades()
   initParallax()
 }
 

@@ -12,8 +12,8 @@
    URLs de imágenes (media library de WordPress). Edita aquí, en un solo lugar.
    Pega la URL completa del archivo (Biblioteca de medios -> abre la imagen -> "URL del archivo").
    ----------------------------------------------------------- */
-$img_hero       = '/wp-content/uploads/2026/07/MartinezFamilyHero.png'; // TODO(Daniel): imagen editorial del equipo/viñedo (hero del About)
-$img_octavio    = ''; // TODO(Daniel): foto de Octavio Garcia (liderazgo)
+$img_hero       = '/wp-content/uploads/2026/07/MartinezFamilyHero.png'; // imagen editorial del About (familia)
+$img_octavio    = '/wp-content/uploads/2026/07/MF_CEO-scaled.webp'; // foto de Octavio Garcia (liderazgo)
 $img_award_seal = '/wp-content/uploads/2026/06/Martinez-Farming_Sello.png'; // sello del premio
 ?>
 
@@ -35,17 +35,27 @@ $img_award_seal = '/wp-content/uploads/2026/06/Martinez-Farming_Sello.png'; // s
   </section>
 
   <!-- =================== S2 · MISSION & VISION =================== -->
-  <section aria-labelledby="mv-h" class="bg-white">
-    <div class="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:py-24">
+  <section aria-labelledby="mv-h" class="relative isolate overflow-hidden bg-raiz-profunda text-white">
+    <!-- Video de fondo -->
+    <video
+      class="absolute inset-0 h-full w-full object-cover"
+      autoplay muted loop playsinline
+      aria-hidden="true"
+    >
+      <source src="/wp-content/uploads/2026/07/grape-in-vineyard-2025-12-17-20-12-53-utc.mp4" type="video/mp4" />
+    </video>
+    <div class="absolute inset-0 bg-raiz-profunda/75"></div>
+
+    <div class="relative z-10 mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:py-24">
       <h2 id="mv-h" class="sr-only">Mission and vision</h2>
       <div class="grid gap-8 lg:grid-cols-2 lg:gap-12">
-        <div class="reveal rounded-2xl border border-stone-200 bg-stone-50 p-8 sm:p-10">
+        <div class="reveal rounded-2xl border border-white/15 bg-white/10 p-8 backdrop-blur-md sm:p-10">
           <p class="text-xs font-bold uppercase tracking-[0.22em] text-olivar-vivo">Our mission</p>
-          <p class="mt-4 font-display text-2xl leading-snug text-raiz-profunda sm:text-3xl">To farm with excellence and respect, delivering premium agricultural services that combine technical precision, sustainability, and human pride to give life to the world's great wines.</p>
+          <p class="mt-4 font-display text-2xl leading-snug text-white sm:text-3xl">To farm with excellence and respect, delivering premium agricultural services that combine technical precision, sustainability, and human pride to give life to the world's great wines.</p>
         </div>
-        <div class="reveal rounded-2xl border border-stone-200 bg-stone-50 p-8 sm:p-10">
+        <div class="reveal rounded-2xl border border-white/15 bg-white/10 p-8 backdrop-blur-md sm:p-10">
           <p class="text-xs font-bold uppercase tracking-[0.22em] text-olivar-vivo">Our vision</p>
-          <p class="mt-4 font-display text-2xl leading-snug text-raiz-profunda sm:text-3xl">To be recognized globally as the most trusted and ethical partner in the wine industry, a symbol of quality, integrity, and family legacy.</p>
+          <p class="mt-4 font-display text-2xl leading-snug text-white sm:text-3xl">To be recognized globally as the most trusted and ethical partner in the wine industry, a symbol of quality, integrity, and family legacy.</p>
         </div>
       </div>
     </div>
@@ -74,6 +84,16 @@ $img_award_seal = '/wp-content/uploads/2026/06/Martinez-Farming_Sello.png'; // s
 
   <!-- =================== S4 · WHAT WE STAND FOR =================== -->
   <section aria-labelledby="values-h" class="relative isolate overflow-hidden bg-raiz-profunda text-white">
+    <!-- Video de fondo -->
+    <video
+      class="absolute inset-0 h-full w-full object-cover"
+      autoplay muted loop playsinline
+      aria-hidden="true"
+    >
+      <source src="/wp-content/uploads/2026/07/fresh-grapes-in-a-sunny-vineyard-2025-12-17-07-15-47-utc.mp4" type="video/mp4" />
+    </video>
+    <div class="absolute inset-0 bg-raiz-profunda/75"></div>
+
     <!-- Estampado de fondo (mismo tono que el bg -> mix-blend screen). -->
     <div
       aria-hidden="true"
@@ -198,30 +218,34 @@ $img_award_seal = '/wp-content/uploads/2026/06/Martinez-Farming_Sello.png'; // s
     </div>
   </section>
 
-  <!-- =================== S7 · CLOSING CTA =================== -->
-  <section aria-labelledby="cta-h" class="relative flex min-h-[70svh] items-center overflow-hidden bg-noche-vinedo text-white">
+  <!-- =================== S7 · CONTACT (form) =================== -->
+  <section aria-labelledby="cta-h" class="relative isolate overflow-hidden bg-noche-vinedo text-white">
     <!-- Estampado (mismo tratamiento que el Home). TODO(Daniel): ajusta opacity. -->
     <div
       aria-hidden="true"
       class="pointer-events-none absolute inset-0 bg-repeat"
       style="background-image:url('/wp-content/uploads/2026/06/Estampados-MF_2-scaled.png'); background-size:auto 220px; opacity:0.45; mix-blend-mode:screen"
     ></div>
-    <div class="relative z-10 mx-auto max-w-4xl px-4 py-24 text-center sm:px-6">
-      <h2 id="cta-h" class="reveal font-display text-4xl leading-tight sm:text-5xl">Let's grow something worth remembering.</h2>
-      <p class="reveal mx-auto mt-6 max-w-2xl text-lg text-tierra-suave">Whether you are evaluating raw land or looking for a reliable partner through harvest, we would be glad to talk.</p>
-      <div class="reveal mt-10">
-        <a href="/contact" class="inline-flex items-center justify-center rounded-md bg-olivar-vivo px-8 py-4 text-lg font-bold text-raiz-profunda transition-colors hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-noche-vinedo active:scale-[0.99]">
-          Request a Consultation
-        </a>
+    <div class="relative z-10 mx-auto grid max-w-7xl gap-12 px-4 py-16 sm:px-6 lg:grid-cols-2 lg:gap-16 lg:py-20">
+      <!-- Texto + contacto -->
+      <div class="reveal">
+        <p class="text-xs font-bold uppercase tracking-[0.22em] text-olivar-vivo">Let's talk</p>
+        <h2 id="cta-h" class="mt-2 font-display text-4xl leading-tight sm:text-5xl">Let's grow something worth remembering.</h2>
+        <p class="mt-5 max-w-md text-lg text-tierra-suave">Whether you are evaluating raw land or looking for a reliable partner through harvest, we would be glad to talk.</p>
+        <div class="mt-8 space-y-2 text-sm">
+          <a href="tel:+18054239303" class="block text-tierra-suave hover:text-white">805-423-9303</a>
+          <!-- TODO(Daniel): [CONFIRMAR] correo de dominio en lugar de martinezfarming@yahoo.com -->
+          <a href="mailto:martinezfarming@yahoo.com" class="block text-tierra-suave hover:text-white">martinezfarming@yahoo.com</a>
+          <p class="text-tierra-suave">Paso Robles, California</p>
+        </div>
       </div>
-      <!-- TODO(Daniel): [CONFIRMAR] correo de dominio en lugar de martinezfarming@yahoo.com -->
-      <p class="reveal mt-8 text-sm text-tierra-suave/80">
-        <a href="tel:+18054239303" class="hover:text-white">805-423-9303</a>
-        <span class="mx-2 text-white/30">·</span>
-        <a href="mailto:martinezfarming@yahoo.com" class="hover:text-white">martinezfarming@yahoo.com</a>
-        <span class="mx-2 text-white/30">·</span>
-        Paso Robles, California
-      </p>
+
+      <!-- Formulario (ContactForm React; monta en #render-contact-form) -->
+      <div class="reveal">
+        <div class="rounded-2xl bg-white p-6 text-raiz-profunda shadow-xl sm:p-8">
+          <div id="render-contact-form"></div>
+        </div>
+      </div>
     </div>
   </section>
 

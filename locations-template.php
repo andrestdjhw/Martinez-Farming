@@ -11,12 +11,22 @@
 <main data-locations class="font-sans text-raiz-profunda">
 
   <!-- =================== S1 · HEADER =================== -->
-  <section aria-labelledby="loc-h" class="bg-stone-50">
-    <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:py-20">
+  <section aria-labelledby="loc-h" class="relative isolate overflow-hidden bg-raiz-profunda text-white">
+    <!-- Video de fondo -->
+    <video
+      class="absolute inset-0 h-full w-full object-cover"
+      autoplay muted loop playsinline
+      aria-hidden="true"
+    >
+      <source src="/wp-content/uploads/2026/07/LocationsMF_Hero.mp4" type="video/mp4" />
+    </video>
+    <div class="absolute inset-0 bg-raiz-profunda/70"></div>
+
+    <div class="relative z-10 mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:py-28">
       <div class="max-w-3xl reveal">
         <p class="text-xs font-bold uppercase tracking-[0.22em] text-olivar-vivo">Locations</p>
-        <h1 id="loc-h" class="mt-3 font-display text-4xl leading-[1.08] text-raiz-profunda sm:text-5xl">Rooted in Paso Robles. Serving the Central Coast.</h1>
-        <p class="mt-5 max-w-2xl text-lg leading-relaxed text-stone-600">
+        <h1 id="loc-h" class="mt-3 font-display text-4xl leading-[1.08] text-white sm:text-5xl">Rooted in Paso Robles. Serving the Central Coast.</h1>
+        <p class="mt-5 max-w-2xl text-lg leading-relaxed text-tierra-suave">
           From our home in Paso Robles, we serve vineyards across three counties, with the same crews, the same standards, and the same accountability.
         </p>
       </div>

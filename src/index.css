@@ -132,8 +132,8 @@ body {
   overflow: hidden;
   background: radial-gradient(ellipse at bottom, #321b35 0%, #090a0f 100%);
 }
-#season-stars, #season-stars2, #season-stars3 { position: absolute; top: 0; left: 0; }
-#season-stars  { width: 1px; height: 1px; background: transparent; box-shadow:
+#season-stars, #season-stars2, #season-stars3, .season-stars, .season-stars2, .season-stars3 { position: absolute; top: 0; left: 0; }
+#season-stars, .season-stars { width: 1px; height: 1px; background: transparent; box-shadow:
     849px 1144px #fff,
     306px 1996px #fff,
     1165px 210px #fff,
@@ -835,7 +835,7 @@ body {
     941px 1331px #fff,
     1928px 852px #fff;
   animation: animStar 50s linear infinite; }
-#season-stars:after  { content: " "; position: absolute; top: 2000px; width: 1px; height: 1px; background: transparent; box-shadow:
+#season-stars:after, .season-stars:after { content: " "; position: absolute; top: 2000px; width: 1px; height: 1px; background: transparent; box-shadow:
     849px 1144px #fff,
     306px 1996px #fff,
     1165px 210px #fff,
@@ -1536,7 +1536,7 @@ body {
     1825px 1601px #fff,
     941px 1331px #fff,
     1928px 852px #fff; }
-#season-stars2 { width: 2px; height: 2px; background: transparent; box-shadow:
+#season-stars2, .season-stars2 { width: 2px; height: 2px; background: transparent; box-shadow:
     1775px 514px #fff,
     5px 1914px #fff,
     1620px 189px #fff,
@@ -1738,7 +1738,7 @@ body {
     481px 916px #fff,
     1183px 1111px #fff;
   animation: animStar 100s linear infinite; }
-#season-stars2:after { content: " "; position: absolute; top: 2000px; width: 2px; height: 2px; background: transparent; box-shadow:
+#season-stars2:after, .season-stars2:after { content: " "; position: absolute; top: 2000px; width: 2px; height: 2px; background: transparent; box-shadow:
     1775px 514px #fff,
     5px 1914px #fff,
     1620px 189px #fff,
@@ -1939,7 +1939,7 @@ body {
     1395px 1819px #fff,
     481px 916px #fff,
     1183px 1111px #fff; }
-#season-stars3 { width: 3px; height: 3px; background: transparent; box-shadow:
+#season-stars3, .season-stars3 { width: 3px; height: 3px; background: transparent; box-shadow:
     511px 595px #fff,
     861px 1956px #fff,
     395px 804px #fff,
@@ -2041,7 +2041,7 @@ body {
     861px 1336px #fff,
     1949px 829px #fff;
   animation: animStar 150s linear infinite; }
-#season-stars3:after { content: " "; position: absolute; top: 2000px; width: 3px; height: 3px; background: transparent; box-shadow:
+#season-stars3:after, .season-stars3:after { content: " "; position: absolute; top: 2000px; width: 3px; height: 3px; background: transparent; box-shadow:
     511px 595px #fff,
     861px 1956px #fff,
     395px 804px #fff,
@@ -2148,7 +2148,7 @@ body {
   to   { transform: translateY(-2000px); }
 }
 @media (prefers-reduced-motion: reduce) {
-  #season-stars, #season-stars2, #season-stars3 { animation: none; }
+  #season-stars, #season-stars2, #season-stars3, .season-stars, .season-stars2, .season-stars3 { animation: none; }
 }
 
 /* ===========================================================
@@ -2208,4 +2208,30 @@ body {
 @media (prefers-reduced-motion: reduce) {
   .vmarquee-track { animation: none; }
   .vmarquee { overflow-x: auto; -webkit-mask-image: none; mask-image: none; }
+}
+
+/* ===========================================================
+   Season "blades" (estilo Xbox 360): acordeón horizontal de
+   paneles con imagen. El activo se expande; los demás colapsan.
+   Anima flex-grow (soportado en navegadores modernos).
+   =========================================================== */
+.season-blades .blade {
+  flex: 1 1 0;
+  min-width: 3.25rem;
+  transition: flex-grow 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.season-blades .blade.is-active { flex-grow: 7; }
+@media (min-width: 640px) { .season-blades .blade { min-width: 5rem; } }
+
+.blade .blade-tab { opacity: 1; transition: opacity 0.3s ease; }
+.blade.is-active .blade-tab { opacity: 0; pointer-events: none; }
+.blade-vlabel { writing-mode: vertical-rl; letter-spacing: 0.05em; }
+
+.blade .blade-content { opacity: 0; transition: opacity 0.45s ease 0.1s; pointer-events: none; }
+.blade.is-active .blade-content { opacity: 1; pointer-events: auto; }
+
+@media (prefers-reduced-motion: reduce) {
+  .season-blades .blade,
+  .blade .blade-tab,
+  .blade .blade-content { transition: none; }
 }

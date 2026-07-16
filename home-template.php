@@ -26,8 +26,8 @@ $img_legacy_side = '/wp-content/uploads/2026/06/LegacyMF-scaled.jpg';
 
 <main data-home class="font-sans text-raiz-profunda">
 
-  <!-- =================== S1 · HERO =================== -->
-  <section class="relative flex min-h-[calc(100svh-7rem)] items-center overflow-hidden bg-raiz-profunda text-white">
+  <!-- =================== S1 · HERO (con stats strip) =================== -->
+  <section class="relative flex min-h-[calc(100svh-8rem)] flex-col overflow-hidden bg-raiz-profunda text-white">
     <!-- TODO(Daniel): video y poster de respaldo (media library). -->
     <video
       class="absolute inset-0 h-full w-full object-cover"
@@ -35,19 +35,26 @@ $img_legacy_side = '/wp-content/uploads/2026/06/LegacyMF-scaled.jpg';
       poster="/wp-content/uploads/2026/06/HeroMartinezFarming-scaled.jpg"
       aria-hidden="true"
     >
-      <source src="/wp-content/uploads/2026/06/VineyardHeroPanel.mp4" type="video/mp4" />
+      <source src="/wp-content/uploads/2026/07/MFHeroPlaybackRename.mp4" type="video/mp4" />
     </video>
     <div class="absolute inset-0 bg-gradient-to-t from-raiz-profunda/90 via-raiz-profunda/60 to-raiz-profunda/45"></div>
 
-    <div class="relative z-10 mx-auto grid w-full max-w-7xl items-center gap-12 px-4 py-20 sm:px-6 lg:grid-cols-2">
-      <!-- Columna izquierda: texto -->
+    <!-- Contenido principal (crece para llenar el viewport) -->
+    <div class="relative z-10 flex flex-1 items-center">
+      <div class="mx-auto grid w-full max-w-7xl items-center gap-8 px-4 py-4 sm:px-6 lg:grid-cols-2 lg:py-5">
+      <!-- Columna izquierda: badge + texto -->
       <div class="max-w-2xl reveal">
+        <!-- Badge del premio (arriba, izquierda) -->
+        <div class="mb-4 inline-flex items-start gap-2.5 rounded-md border border-white/20 bg-white/10 px-3.5 py-2.5 backdrop-blur-sm">
+          <svg class="mt-0.5 h-4 w-4 shrink-0 text-olivar-vivo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="6"/><path d="M8.21 13.89 7 22l5-3 5 3-1.21-8.12"/></svg>
+          <span class="text-xs leading-snug text-tierra-suave">2026 San Luis Obispo County <span class="font-bold text-white">Winegrape Grower of the Year</span></span>
+        </div>
         <p class="text-sm font-bold uppercase tracking-[0.28em] text-olivar-vivo">Grow with honor.</p>
-        <h1 class="mt-4 font-display text-4xl leading-[1.05] sm:text-5xl">We grow excellence into every cluster.</h1>
-        <p class="mt-6 max-w-xl text-base leading-relaxed text-tierra-suave sm:text-lg">
+        <h1 class="mt-3 font-display text-4xl leading-[1.05] sm:text-5xl">We grow excellence into every cluster.</h1>
+        <p class="mt-4 max-w-xl text-base leading-relaxed text-tierra-suave sm:text-lg">
           A family owned vineyard services company rooted in Paso Robles, California. We bring skilled hands, technical precision, and real accountability to the vineyards behind California's Central Coast wines.
         </p>
-        <div class="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
+        <div class="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
           <a href="/contact" class="inline-flex items-center justify-center rounded-md bg-olivar-vivo px-7 py-3.5 font-bold text-raiz-profunda transition-colors hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-raiz-profunda active:scale-[0.99]">
             Request a Consultation
           </a>
@@ -57,98 +64,93 @@ $img_legacy_side = '/wp-content/uploads/2026/06/LegacyMF-scaled.jpg';
         </div>
       </div>
 
-      <!-- Columna derecha: badge del premio + Contact Form flotante -->
+      <!-- Columna derecha: Contact Form flotante -->
       <div class="mx-auto flex w-full max-w-md flex-col gap-5 lg:ml-auto">
-        <!-- Badge del premio -->
-        <div class="flex items-start gap-2.5 self-center rounded-md border border-white/20 bg-white/10 px-3.5 py-2.5 backdrop-blur-sm lg:self-end">
-          <svg class="mt-0.5 h-4 w-4 shrink-0 text-olivar-vivo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="6"/><path d="M8.21 13.89 7 22l5-3 5 3-1.21-8.12"/></svg>
-          <span class="text-xs leading-snug text-tierra-suave">2026 San Luis Obispo County <span class="font-bold text-white">Winegrape Grower of the Year</span></span>
-        </div>
         <!-- Contact Form (flotante; se pausa al interactuar). React monta aquí. -->
         <div id="render-contact-form" class="float-card"></div>
       </div>
-    </div>
-  </section>
-
-  <!-- =================== S2 · CAPACITY =================== -->
-  <section aria-labelledby="capacity-h" class="relative overflow-hidden bg-raiz-profunda text-white">
-    <!-- Estampado decorativo — cubre toda la sección (hasta el heading), patrón en mosaico
-         a escala fija para que no se agrande. TODO(Daniel): ajusta opacity/background-size. -->
-    <div
-      aria-hidden="true"
-      class="pointer-events-none absolute inset-0 z-0 bg-repeat"
-      style="background-image:url('/wp-content/uploads/2026/06/Estampados-MF_8-scaled.png'); background-size:auto 180px; opacity:0.1"
-    ></div>
-
-    <div class="relative z-10 mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:py-24">
-      <div class="max-w-3xl reveal">
-        <h2 id="capacity-h" class="font-display text-3xl sm:text-4xl">Built to deliver, season after season.</h2>
-        <p class="mt-4 text-tierra-suave">Premium results take more than good intentions. They take the people, the equipment, and the standards to execute at scale, every harvest.</p>
       </div>
+    </div>
 
-      <!-- Counters. data-counter + data-target numérico anima; los [CONFIRMAR] quedan como placeholder. -->
-      <div class="mt-14 grid grid-cols-2 gap-8 border-t border-white/10 pt-10 lg:grid-cols-4">
-        <!-- TODO(Daniel): # acres bajo manejo -->
-        <div class="reveal">
-          <!-- +3,000 Acres -->
-          <div class="font-display text-5xl text-olivar-vivo sm:text-6xl"><span data-counter data-target="3,000">0</span></div>
-          <p class="mt-2 text-sm text-tierra-suave">Acres under management<span class="mt-0.5 block text-xs text-tierra-suave/50"></span></p>
-        </div>
-        <!-- TODO(Daniel): # de personas en cuadrillas -->
-        <div class="reveal">
-          <div class="font-display text-5xl text-olivar-vivo sm:text-6xl">&mdash;</div>
-          <p class="mt-2 text-sm text-tierra-suave">People on our crews<span class="mt-0.5 block text-xs text-tierra-suave/50"></span></p>
-        </div>
-        <!-- Real -->
-        <div class="reveal">
-          <div class="font-display text-5xl text-olivar-vivo sm:text-6xl"><span data-counter data-target="3">0</span></div>
-          <p class="mt-2 text-sm text-tierra-suave">Counties served</p>
-        </div>
-        <!-- TODO(Daniel): # años en la Central Coast -->
-        <div class="reveal">
-          <div class="font-display text-5xl text-olivar-vivo sm:text-6xl">&mdash;</div>
-          <p class="mt-2 text-sm text-tierra-suave">Years on the Central Coast<span class="mt-0.5 block text-xs text-tierra-suave/50"></span></p>
+    <!-- Stats strip (integrado al hero, abajo) -->
+    <div class="relative z-10 bg-raiz-profunda/50 backdrop-blur-sm">
+      <div class="mx-auto max-w-7xl px-4 py-3 sm:px-6">
+        <div class="grid grid-cols-2 gap-6 lg:grid-cols-4">
+          <!-- TODO(Daniel): # acres bajo manejo -->
+          <div class="reveal">
+            <div class="font-display text-2xl text-olivar-vivo sm:text-3xl"><span data-counter data-target="3,000">0</span></div>
+            <p class="mt-0.5 text-xs text-tierra-suave sm:text-sm">Acres under management</p>
+          </div>
+          <!-- TODO(Daniel): # de personas en cuadrillas -->
+          <div class="reveal">
+            <div class="font-display text-2xl text-olivar-vivo sm:text-3xl">&mdash;</div>
+            <p class="mt-0.5 text-xs text-tierra-suave sm:text-sm">People on our crews</p>
+          </div>
+          <!-- Real -->
+          <div class="reveal">
+            <div class="font-display text-2xl text-olivar-vivo sm:text-3xl"><span data-counter data-target="3">0</span></div>
+            <p class="mt-0.5 text-xs text-tierra-suave sm:text-sm">Counties served</p>
+          </div>
+          <!-- TODO(Daniel): # años en la Central Coast -->
+          <div class="reveal">
+            <div class="font-display text-2xl text-olivar-vivo sm:text-3xl">&mdash;</div>
+            <p class="mt-0.5 text-xs text-tierra-suave sm:text-sm">Years on the Central Coast</p>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- =================== S3 · SERVICES =================== -->
-  <section aria-labelledby="services-h" class="bg-stone-50">
-    <div class="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:py-24">
+  <!-- =================== S2 · SERVICES =================== -->
+  <section aria-labelledby="services-h" class="relative isolate overflow-hidden bg-[#090a0f] text-white">
+    <!-- Fondo de estrellas animado (.season-sky, definido en index.css) -->
+    <div class="season-sky -z-10" aria-hidden="true">
+      <div class="season-stars"></div>
+      <div class="season-stars2"></div>
+      <div class="season-stars3"></div>
+    </div>
+
+    <div class="relative mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:py-24">
       <div class="max-w-3xl reveal">
         <p class="text-xs font-bold uppercase tracking-[0.22em] text-olivar-vivo">Our services</p>
-        <h2 id="services-h" class="mt-2 font-display text-3xl text-raiz-profunda sm:text-4xl">Vineyard expertise at every stage, from raw land to harvest.</h2>
-        <p class="mt-4 text-stone-600">Skilled crews and seasoned field leadership across four core services.</p>
+        <h2 id="services-h" class="mt-2 font-display text-3xl text-white sm:text-4xl">Vineyard expertise at every stage, from raw land to harvest.</h2>
+        <p class="mt-4 text-lg text-tierra-suave">Skilled crews and seasoned field leadership across four core services.</p>
       </div>
 
-      <div class="mt-12 grid gap-5 sm:grid-cols-2">
-        <?php
-          $services = [
-            ['General Labor', 'Skilled field crews who keep your vines healthy and productive all season.', '/services/general-labor', $img_general_labor],
-            ['Vineyard Installations', 'From raw land to productive vineyard, built right from day one.', '/services/vineyard-installations', $img_vineyard_installations],
-            ['Vineyard Management', 'Hands on stewardship from dormancy through harvest.', '/services/vineyard-management', $img_vineyard_management],
-            ['Consulting', 'Practical, site specific guidance backed by real vineyard experience.', '/services/consulting', $img_consulting],
-          ];
-          foreach ($services as $s): ?>
-          <a href="<?php echo esc_url($s[2]); ?>" class="reveal group relative block overflow-hidden rounded-xl bg-raiz-profunda focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-olivar-vivo focus-visible:ring-offset-2">
-            <!-- Foto del servicio (URL desde la variable $img_* definida arriba). -->
-            <div class="aspect-[16/10] w-full bg-noche-vinedo/40 bg-cover bg-center transition-transform duration-500 group-hover:scale-105" style="background-image:url('<?php echo esc_url($s[3]); ?>')"></div>
-            <div class="absolute inset-0 bg-gradient-to-t from-raiz-profunda via-raiz-profunda/35 to-transparent"></div>
-            <div class="absolute inset-x-0 bottom-0 p-6">
-              <h3 class="font-display text-2xl text-white"><?php echo esc_html($s[0]); ?></h3>
-              <p class="mt-1 max-w-md text-sm text-tierra-suave opacity-0 transition-all duration-300 group-hover:opacity-100 sm:max-h-0 sm:translate-y-1 sm:overflow-hidden sm:group-hover:max-h-24 sm:group-hover:translate-y-0"><?php echo esc_html($s[1]); ?></p>
-              <span class="mt-3 inline-flex items-center gap-1.5 text-sm font-bold text-olivar-vivo">
-                Learn more
-                <svg class="h-4 w-4 transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-              </span>
-            </div>
-          </a>
-        <?php endforeach; ?>
+      <div class="mt-12 marquee reveal">
+        <div class="marquee-track">
+          <?php
+            $services = [
+              ['General Labor', 'Skilled field crews who keep your vines healthy and productive all season.', '/services/general-labor', $img_general_labor],
+              ['Vineyard Installations', 'From raw land to productive vineyard, built right from day one.', '/services/vineyard-installations', $img_vineyard_installations],
+              ['Vineyard Management', 'Hands on stewardship from dormancy through harvest.', '/services/vineyard-management', $img_vineyard_management],
+              ['Consulting', 'Practical, site specific guidance backed by real vineyard experience.', '/services/consulting', $img_consulting],
+            ];
+            // Repetimos el set dos veces para un loop continuo y sin saltos.
+            for ($rep = 0; $rep < 2; $rep++):
+              foreach ($services as $i => $s): ?>
+              <a href="<?php echo esc_url($s[2]); ?>" class="group relative mr-6 block h-[28rem] w-80 shrink-0 overflow-hidden rounded-2xl border border-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-olivar-vivo focus-visible:ring-offset-2 focus-visible:ring-offset-[#090a0f]"<?php echo $rep === 1 ? ' aria-hidden="true" tabindex="-1"' : ''; ?>>
+                <!-- Foto del servicio (URL desde la variable $img_* definida arriba). -->
+                <div class="absolute inset-0 bg-gradient-to-br from-noche-vinedo to-raiz-profunda bg-cover bg-center transition-transform duration-500 group-hover:scale-105"<?php if ($s[3]): ?> style="background-image:url('<?php echo esc_url($s[3]); ?>')"<?php endif; ?>></div>
+                <!-- Degradado para legibilidad del texto -->
+                <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/45 to-transparent"></div>
+                <!-- Texto encima de la foto -->
+                <div class="relative flex h-full flex-col justify-end p-6">
+                  <span class="font-display text-5xl leading-none text-olivar-vivo"><?php echo sprintf('%02d', $i + 1); ?></span>
+                  <h3 class="mt-3 font-display text-2xl text-white"><?php echo esc_html($s[0]); ?></h3>
+                  <p class="mt-2 text-sm leading-relaxed text-white/85"><?php echo esc_html($s[1]); ?></p>
+                  <span class="mt-4 inline-flex items-center gap-1.5 text-sm font-bold text-olivar-vivo">
+                    Learn more
+                    <svg class="h-4 w-4 transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                  </span>
+                </div>
+              </a>
+            <?php endforeach; endfor; ?>
+        </div>
       </div>
 
       <div class="mt-10 reveal">
-        <a href="/services" class="inline-flex items-center gap-2 rounded-md border border-raiz-profunda/25 px-6 py-3 font-bold text-raiz-profunda transition-colors hover:border-olivar-vivo hover:text-noche-vinedo focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-olivar-vivo focus-visible:ring-offset-2">
+        <a href="/services" class="inline-flex items-center gap-2 rounded-md border border-white/30 px-6 py-3 font-bold text-white transition-colors hover:border-olivar-vivo hover:text-olivar-vivo focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-olivar-vivo focus-visible:ring-offset-2 focus-visible:ring-offset-[#090a0f]">
           View all services
           <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
         </a>
@@ -157,13 +159,13 @@ $img_legacy_side = '/wp-content/uploads/2026/06/LegacyMF-scaled.jpg';
   </section>
 
   <!-- =================== S4 · SEASON CYCLE (firma) =================== -->
-  <section aria-labelledby="season-h" class="relative isolate overflow-hidden bg-[#090a0f] text-white" data-season>
-    <!-- Fondo de estrellas animado (.season-sky, definido en index.css) -->
-    <div class="season-sky -z-10" aria-hidden="true">
-      <div id="season-stars"></div>
-      <div id="season-stars2"></div>
-      <div id="season-stars3"></div>
-    </div>
+  <section aria-labelledby="season-h" class="relative isolate overflow-hidden bg-raiz-profunda text-white" data-season>
+    <!-- Estampado de fondo (mismo tono que el bg -> mix-blend screen). -->
+    <div
+      aria-hidden="true"
+      class="pointer-events-none absolute inset-0 -z-10 bg-repeat"
+      style="background-image:url('/wp-content/uploads/2026/06/Estampados-MF_2-scaled.png'); background-size:auto 220px; opacity:0.3; mix-blend-mode:screen"
+    ></div>
 
     <div class="relative mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:py-24">
       <div class="max-w-3xl reveal">
@@ -172,31 +174,43 @@ $img_legacy_side = '/wp-content/uploads/2026/06/LegacyMF-scaled.jpg';
         <p class="mt-4 text-tierra-suave">From dormancy to harvest, every stage gets the same attention and the same standard.</p>
       </div>
 
-      <div class="mt-12">
-        <!-- Track horizontal con scroll-snap controlado por el usuario -->
-        <div id="season-track" class="season-track flex snap-x snap-mandatory overflow-x-auto scroll-smooth rounded-2xl border border-white/10 shadow-2xl">
+      <div class="mt-12 reveal">
+        <div id="season-blades" class="season-blades flex h-[26rem] gap-2 sm:h-[32rem]">
           <?php
             $stages = [
-              ['01', 'Dormancy', 'Pruning strategy that sets the season up right.'],
-              ['02', 'Bud break', 'Canopy and shoot work for healthy, balanced growth.'],
-              ['03', 'Veraison', 'Irrigation and pest monitoring dialed to the fruit.'],
-              ['04', 'Harvest', 'Careful hand harvesting and clean post harvest work.'],
+              ['01', 'Dormancy', 'Winter is when the next vintage is shaped. We prune with intent, choosing the wood that will carry the crop and balancing vigor with yield, so every vine starts the season set up to perform.', '/wp-content/uploads/2026/07/DormancyManagement01.png'],
+              ['02', 'Bud break', 'As the vines wake, timing is everything. We manage canopy and shoot growth, suckering and positioning for airflow and light, so the vine spends its energy on healthy, balanced growth and even fruit set.', '/wp-content/uploads/2026/07/BudbreakManagement02.png'],
+              ['03', 'Veraison', 'When the fruit begins to color and soften, precision matters most. We dial irrigation to what the vines need and watch pest and disease pressure closely, protecting the crop as it ripens toward its peak.', '/wp-content/uploads/2026/07/VeraisonManagement03.png'],
+              ['04', 'Harvest', 'The payoff for a year of care. We hand harvest with attention to fruit quality and timing, then move fast on clean post harvest work so the vineyard is ready to rest and begin again.', '/wp-content/uploads/2026/07/HarvestManagement04.png'],
             ];
-            foreach ($stages as $st): ?>
-            <article class="season-stage w-full shrink-0 snap-center bg-gradient-to-br from-raiz-profunda to-noche-vinedo p-10 text-white sm:p-16">
-              <span class="font-display text-sm text-olivar-vivo"><?php echo $st[0]; ?> / 04</span>
-              <h3 class="mt-3 font-display text-3xl sm:text-5xl"><?php echo esc_html($st[1]); ?></h3>
-              <p class="mt-4 max-w-xl text-base text-tierra-suave sm:text-lg"><?php echo esc_html($st[2]); ?></p>
-            </article>
+            foreach ($stages as $i => $st): ?>
+            <button type="button" data-blade class="blade group relative overflow-hidden rounded-2xl border border-white/10 text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-olivar-vivo <?php echo $i === 0 ? 'is-active' : ''; ?>" aria-expanded="<?php echo $i === 0 ? 'true' : 'false'; ?>" aria-label="<?php echo esc_attr($st[1]); ?>">
+              <!-- Imagen de fondo de la estación -->
+              <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105" style="background-image:url('<?php echo esc_url($st[3]); ?>')"></div>
+              <!-- Degradado para legibilidad -->
+              <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/45 to-black/20"></div>
+
+              <!-- Etiqueta vertical (estado colapsado) -->
+              <div class="blade-tab absolute inset-0 flex flex-col items-center justify-center gap-4 p-3">
+                <span class="font-display text-lg text-olivar-vivo"><?php echo $st[0]; ?></span>
+                <span class="blade-vlabel font-display text-lg text-white"><?php echo esc_html($st[1]); ?></span>
+              </div>
+
+              <!-- Contenido completo (estado activo) -->
+              <div class="blade-content absolute inset-0 flex flex-col justify-end p-6 sm:p-8">
+                <span class="font-display text-sm text-olivar-vivo"><?php echo $st[0]; ?> / 04</span>
+                <h3 class="mt-2 font-display text-3xl text-white sm:text-4xl lg:text-5xl"><?php echo esc_html($st[1]); ?></h3>
+                <p class="mt-4 max-w-md text-sm leading-relaxed text-white/85 sm:text-base"><?php echo esc_html($st[2]); ?></p>
+              </div>
+            </button>
           <?php endforeach; ?>
         </div>
 
-        <!-- Control deslizador -->
-        <div class="mt-6">
-          <input id="season-range" type="range" min="0" max="3" step="1" value="0" aria-label="Scrub through the growing season" class="w-full accent-olivar-vivo" />
-          <div class="mt-3 flex justify-between text-xs font-medium uppercase tracking-wider text-tierra-suave/80">
-            <span>Dormancy</span><span>Bud break</span><span>Veraison</span><span>Harvest</span>
-          </div>
+        <!-- Indicadores -->
+        <div class="mt-5 flex justify-center gap-2">
+          <?php foreach ($stages as $i => $st): ?>
+          <span data-blade-dot class="h-1.5 w-7 rounded-full transition-colors <?php echo $i === 0 ? 'bg-olivar-vivo' : 'bg-white/20'; ?>"></span>
+          <?php endforeach; ?>
         </div>
       </div>
     </div>
@@ -344,7 +358,7 @@ $img_legacy_side = '/wp-content/uploads/2026/06/LegacyMF-scaled.jpg';
   </section>
 
   <!-- =================== S9 · CLOSING CTA =================== -->
-  <section aria-labelledby="cta-h" class="relative flex min-h-[80svh] items-center overflow-hidden bg-noche-vinedo text-white">
+  <section aria-labelledby="cta-h" class="relative flex items-center overflow-hidden bg-noche-vinedo text-white">
     <!-- Estampado — el asset es casi del mismo color que el fondo, así que usamos
          mix-blend screen para que el patrón aclare sobre el azul y se note.
          TODO(Daniel): ajusta opacity / mix-blend-mode / background-size. -->
@@ -354,7 +368,7 @@ $img_legacy_side = '/wp-content/uploads/2026/06/LegacyMF-scaled.jpg';
       style="background-image:url('/wp-content/uploads/2026/06/Estampados-MF_2-scaled.png'); background-size:auto 220px; opacity:0.45; mix-blend-mode:screen"
     ></div>
 
-    <div class="relative z-10 mx-auto max-w-4xl px-4 py-24 text-center sm:px-6">
+    <div class="relative z-10 mx-auto max-w-4xl px-4 py-14 text-center sm:px-6 lg:py-16">
       <h2 id="cta-h" class="reveal font-display text-4xl leading-tight sm:text-5xl lg:text-6xl">Let's grow something worth remembering.</h2>
       <p class="reveal mx-auto mt-6 max-w-2xl text-lg text-tierra-suave">Whether you are evaluating raw land or looking for a reliable partner through harvest, we would be glad to talk.</p>
       <div class="reveal mt-10">

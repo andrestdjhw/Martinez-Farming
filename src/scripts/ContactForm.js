@@ -69,7 +69,7 @@ const AlertIcon = ({ className = "h-5 w-5" }) => (
    ------------------------------------------------------------------ */
 function Field({ id, label, type = "text", value, onChange, error, textarea, options, placeholder, ...rest }) {
   const base =
-    "w-full rounded-md border bg-white px-4 py-3 text-raiz-profunda placeholder:text-stone-400 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-olivar-vivo/60"
+    "w-full rounded-md border bg-white px-4 py-2.5 text-raiz-profunda placeholder:text-stone-400 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-olivar-vivo/60"
   const tone = error
     ? "border-red-400 focus:border-red-500"
     : "border-stone-300 hover:border-stone-400 focus:border-olivar-vivo"
@@ -83,7 +83,7 @@ function Field({ id, label, type = "text", value, onChange, error, textarea, opt
   }
   return (
     <div>
-      <label htmlFor={id} className="mb-1.5 block text-sm font-medium text-raiz-profunda">
+      <label htmlFor={id} className="mb-1 block text-sm font-medium text-raiz-profunda">
         {label}
       </label>
       {options ? (
@@ -99,7 +99,7 @@ function Field({ id, label, type = "text", value, onChange, error, textarea, opt
           </svg>
         </div>
       ) : textarea ? (
-        <textarea {...shared} placeholder={placeholder} className={`${base} ${tone} min-h-[8rem] resize-y`} {...rest} />
+        <textarea {...shared} placeholder={placeholder} className={`${base} ${tone} min-h-[6rem] resize-y`} {...rest} />
       ) : (
         <input {...shared} type={type} placeholder={placeholder} className={`${base} ${tone}`} {...rest} />
       )}
@@ -203,25 +203,25 @@ function ContactForm() {
     <form
       onSubmit={handleSubmit}
       noValidate
-      className="mx-auto max-w-xl rounded-2xl border border-stone-200 bg-white p-6 shadow-sm sm:p-8"
+      className="mx-auto max-w-xl rounded-2xl border border-stone-200 bg-white p-5 shadow-sm sm:p-6"
     >
-      <div className="mb-6">
+      <div className="mb-4">
         <p className="text-xs font-bold uppercase tracking-[0.22em] text-olivar-vivo">Contact us</p>
         <h2 className="mt-1 font-display text-2xl text-raiz-profunda sm:text-3xl">Let's grow together</h2>
-        <p className="mt-2 text-sm text-stone-600">Tell us about your vineyard and we'll get back to you.</p>
+        <p className="mt-1.5 text-sm text-stone-600">Tell us about your vineyard and we'll get back to you.</p>
       </div>
 
       {/* Banner de error de envío */}
       {status === "error" && (
-        <div role="alert" className="mb-5 flex items-start gap-2.5 rounded-md border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-800">
+        <div role="alert" className="mb-4 flex items-start gap-2.5 rounded-md border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-800">
           <AlertIcon className="mt-0.5 h-4 w-4 shrink-0" />
           <span>Something went wrong sending your message. Please try again, or call us at 805-423-9303.</span>
         </div>
       )}
 
-      <div className="space-y-4">
+      <div className="space-y-3">
         <Field id="name" label="Name" value={values.name} onChange={handleChange} error={errors.name} autoComplete="name" placeholder="Your name" disabled={loading} />
-        <div className="grid gap-4 sm:grid-cols-2">
+        <div className="grid gap-3 sm:grid-cols-2">
           <Field id="email" label="Email" type="email" value={values.email} onChange={handleChange} error={errors.email} autoComplete="email" placeholder="you@email.com" disabled={loading} />
           <Field id="phone" label="Phone" type="tel" value={values.phone} onChange={handleChange} error={errors.phone} autoComplete="tel" placeholder="(805) 000-0000" disabled={loading} />
         </div>
@@ -251,7 +251,7 @@ function ContactForm() {
         <button
           type="submit"
           disabled={loading}
-          className="inline-flex w-full items-center justify-center gap-2 rounded-md bg-raiz-profunda px-6 py-3.5 font-sans font-bold text-white transition-colors hover:bg-noche-vinedo focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-olivar-vivo focus-visible:ring-offset-2 active:scale-[0.99] disabled:cursor-not-allowed disabled:opacity-60"
+          className="inline-flex w-full items-center justify-center gap-2 rounded-md bg-raiz-profunda px-6 py-3 font-sans font-bold text-white transition-colors hover:bg-noche-vinedo focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-olivar-vivo focus-visible:ring-offset-2 active:scale-[0.99] disabled:cursor-not-allowed disabled:opacity-60"
         >
           {loading ? (<><Spinner /> Sending…</>) : "Send message"}
         </button>

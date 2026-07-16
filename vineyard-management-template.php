@@ -153,20 +153,45 @@ $img_stage_harvest  = '/wp-content/uploads/2026/07/HarvestManagement04.png'; // 
     </div>
   </section>
 
-  <!-- =================== S6 · CLOSING CTA =================== -->
-  <section aria-labelledby="cta-h" class="relative flex min-h-[55svh] items-center overflow-hidden bg-noche-vinedo text-white">
+  <!-- =================== S6 · CONTACT (form) =================== -->
+  <section aria-labelledby="cta-h" class="relative isolate overflow-hidden bg-noche-vinedo text-white">
     <div
       aria-hidden="true"
       class="pointer-events-none absolute inset-0 bg-repeat"
       style="background-image:url('/wp-content/uploads/2026/06/Estampados-MF_2-scaled.png'); background-size:auto 220px; opacity:0.45; mix-blend-mode:screen"
     ></div>
-    <div class="relative z-10 mx-auto max-w-4xl px-4 py-24 text-center sm:px-6">
-      <h2 id="cta-h" class="reveal font-display text-4xl leading-tight sm:text-5xl">Looking for a partner through harvest?</h2>
-      <p class="reveal mx-auto mt-6 max-w-2xl text-lg text-tierra-suave">We'll steward your vineyard all year, with the same standard at every stage.</p>
-      <div class="reveal mt-10">
-        <a href="/contact" class="inline-flex items-center justify-center rounded-md bg-olivar-vivo px-8 py-4 text-lg font-bold text-raiz-profunda transition-colors hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-noche-vinedo active:scale-[0.99]">
-          Request a Consultation
-        </a>
+    <div class="relative z-10 mx-auto grid max-w-7xl gap-12 px-4 py-16 sm:px-6 lg:grid-cols-2 lg:gap-16 lg:py-20">
+      <!-- Texto + contacto -->
+      <div class="reveal">
+        <p class="text-xs font-bold uppercase tracking-[0.22em] text-olivar-vivo">Let's talk</p>
+        <h2 id="cta-h" class="mt-2 font-display text-4xl leading-tight sm:text-5xl">Looking for a partner through harvest?</h2>
+        <p class="mt-5 max-w-md text-lg text-tierra-suave">We'll steward your vineyard all year, with the same standard at every stage.</p>
+        <div class="mt-8 space-y-2 text-sm">
+          <a href="tel:+18054239303" class="block text-tierra-suave hover:text-white">805-423-9303</a>
+          <!-- TODO(Daniel): [CONFIRMAR] correo de dominio en lugar de martinezfarming@yahoo.com -->
+          <a href="mailto:martinezfarming@yahoo.com" class="block text-tierra-suave hover:text-white">martinezfarming@yahoo.com</a>
+          <p class="text-tierra-suave">Paso Robles, California</p>
+        </div>
+
+        <!-- Mapa de Google Maps (Paso Robles). TODO(Daniel): reemplaza el src por el embed real. -->
+        <div class="mt-8 overflow-hidden rounded-2xl border border-white/10">
+          <iframe
+            src="https://www.google.com/maps?q=1660+Circle+B+Rd+Paso+Robles+CA+93446&output=embed"
+            title="Martinez Farming — Paso Robles, CA"
+            class="aspect-[16/9] w-full"
+            style="border:0"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            allowfullscreen
+          ></iframe>
+        </div>
+      </div>
+
+      <!-- Formulario (ContactForm React; monta en #render-contact-form) -->
+      <div class="reveal">
+        <div class="rounded-2xl bg-white p-6 text-raiz-profunda shadow-xl sm:p-8">
+          <div id="render-contact-form"></div>
+        </div>
       </div>
     </div>
   </section>

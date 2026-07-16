@@ -1,6 +1,7 @@
 import Navbar from "./scripts/Navbar"
 import Footer from "./scripts/Footer"
 import ContactForm from "./scripts/ContactForm"
+import FloatingCTA from "./scripts/FloatingCTA"
 import "./scripts/home"
 import React from "react"
 import ReactDOM from "react-dom/client"
@@ -21,6 +22,12 @@ if (footerEl) {
 const contactEl = document.querySelector("#render-contact-form")
 if (contactEl) {
   ReactDOM.createRoot(contactEl).render(<ContactForm />)
+}
+
+// Monta el botón flotante (aparece al hacer scroll). Contenedor en footer.php.
+const floatingCtaEl = document.querySelector("#render-floating-cta")
+if (floatingCtaEl) {
+  ReactDOM.createRoot(floatingCtaEl).render(<FloatingCTA />)
 }
 
 // Las interacciones del Home (home.js) se auto-inicializan al importarse.

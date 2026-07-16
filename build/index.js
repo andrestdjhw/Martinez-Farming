@@ -747,7 +747,7 @@ function Field({
   placeholder,
   ...rest
 }) {
-  const base = "w-full rounded-md border bg-white px-4 py-3 text-raiz-profunda placeholder:text-stone-400 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-olivar-vivo/60";
+  const base = "w-full rounded-md border bg-white px-4 py-2.5 text-raiz-profunda placeholder:text-stone-400 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-olivar-vivo/60";
   const tone = error ? "border-red-400 focus:border-red-500" : "border-stone-300 hover:border-stone-400 focus:border-olivar-vivo";
   const shared = {
     id,
@@ -760,7 +760,7 @@ function Field({
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("label", {
       htmlFor: id,
-      className: "mb-1.5 block text-sm font-medium text-raiz-profunda",
+      className: "mb-1 block text-sm font-medium text-raiz-profunda",
       children: label
     }), options ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
       className: "relative",
@@ -792,7 +792,7 @@ function Field({
     }) : textarea ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("textarea", {
       ...shared,
       placeholder: placeholder,
-      className: `${base} ${tone} min-h-[8rem] resize-y`,
+      className: `${base} ${tone} min-h-[6rem] resize-y`,
       ...rest
     }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
       ...shared,
@@ -904,9 +904,9 @@ function ContactForm() {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("form", {
     onSubmit: handleSubmit,
     noValidate: true,
-    className: "mx-auto max-w-xl rounded-2xl border border-stone-200 bg-white p-6 shadow-sm sm:p-8",
+    className: "mx-auto max-w-xl rounded-2xl border border-stone-200 bg-white p-5 shadow-sm sm:p-6",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-      className: "mb-6",
+      className: "mb-4",
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
         className: "text-xs font-bold uppercase tracking-[0.22em] text-olivar-vivo",
         children: "Contact us"
@@ -914,19 +914,19 @@ function ContactForm() {
         className: "mt-1 font-display text-2xl text-raiz-profunda sm:text-3xl",
         children: "Let's grow together"
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
-        className: "mt-2 text-sm text-stone-600",
+        className: "mt-1.5 text-sm text-stone-600",
         children: "Tell us about your vineyard and we'll get back to you."
       })]
     }), status === "error" && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
       role: "alert",
-      className: "mb-5 flex items-start gap-2.5 rounded-md border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-800",
+      className: "mb-4 flex items-start gap-2.5 rounded-md border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-800",
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(AlertIcon, {
         className: "mt-0.5 h-4 w-4 shrink-0"
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
         children: "Something went wrong sending your message. Please try again, or call us at 805-423-9303."
       })]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-      className: "space-y-4",
+      className: "space-y-3",
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(Field, {
         id: "name",
         label: "Name",
@@ -937,7 +937,7 @@ function ContactForm() {
         placeholder: "Your name",
         disabled: loading
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-        className: "grid gap-4 sm:grid-cols-2",
+        className: "grid gap-3 sm:grid-cols-2",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(Field, {
           id: "email",
           label: "Email",
@@ -997,7 +997,7 @@ function ContactForm() {
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
         type: "submit",
         disabled: loading,
-        className: "inline-flex w-full items-center justify-center gap-2 rounded-md bg-raiz-profunda px-6 py-3.5 font-sans font-bold text-white transition-colors hover:bg-noche-vinedo focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-olivar-vivo focus-visible:ring-offset-2 active:scale-[0.99] disabled:cursor-not-allowed disabled:opacity-60",
+        className: "inline-flex w-full items-center justify-center gap-2 rounded-md bg-raiz-profunda px-6 py-3 font-sans font-bold text-white transition-colors hover:bg-noche-vinedo focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-olivar-vivo focus-visible:ring-offset-2 active:scale-[0.99] disabled:cursor-not-allowed disabled:opacity-60",
         children: loading ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.Fragment, {
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(Spinner, {}), " Sending\u2026"]
         }) : "Send message"
@@ -1009,6 +1009,86 @@ function ContactForm() {
   });
 }
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ContactForm);
+
+/***/ },
+
+/***/ "./src/scripts/FloatingCTA.js"
+/*!************************************!*\
+  !*** ./src/scripts/FloatingCTA.js ***!
+  \************************************/
+(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "react/jsx-runtime");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__);
+/* Hallmark · component: floating-cta · genre: editorial · theme: custom (Martinez Farming brand)
+ * pre-emit critique: P5 H4 E4 S4 R4 V4
+ * states applied: default · hover · focus-visible · active · hidden/visible (scroll-driven)
+ * contrast: pass — raiz-profunda text on olivar-vivo pill
+ *
+ * Botón flotante que aparece al hacer scroll hacia abajo (más allá del umbral)
+ * y se oculta cerca del top. Se monta en #render-floating-cta (ver footer.php + index.js).
+ */
+
+
+
+/* ------------------------------------------------------------------
+   CONFIG — edita aquí.
+   ------------------------------------------------------------------ */
+
+const CTA_LABEL = "Call us";
+const PHONE_DISPLAY = "805-423-9303"; // texto que se revela al hover
+const CTA_HREF = "tel:+18054239303";
+const SHOW_AFTER = 500; // px de scroll antes de que aparezca
+
+function FloatingCTA() {
+  const [visible, setVisible] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
+    let ticking = false;
+    const onScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      window.requestAnimationFrame(() => {
+        setVisible(window.scrollY > SHOW_AFTER);
+        ticking = false;
+      });
+    };
+    window.addEventListener("scroll", onScroll, {
+      passive: true
+    });
+    onScroll(); // estado inicial por si la página carga ya scrolleada
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("a", {
+    href: CTA_HREF,
+    "aria-label": `${CTA_LABEL} at ${PHONE_DISPLAY}`,
+    className: `group fixed bottom-5 right-5 z-40 inline-flex items-center rounded-full bg-olivar-vivo px-4 py-3.5 font-sans font-bold text-raiz-profunda shadow-lg shadow-black/25 transition-all duration-300 hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-raiz-profunda active:scale-95 motion-reduce:transition-none ${visible ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-4 opacity-0"}`,
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("svg", {
+      className: "h-5 w-5 shrink-0",
+      viewBox: "0 0 24 24",
+      fill: "none",
+      stroke: "currentColor",
+      strokeWidth: "2",
+      strokeLinecap: "round",
+      strokeLinejoin: "round",
+      "aria-hidden": "true",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("path", {
+        d: "M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z"
+      })
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {
+      "aria-hidden": "true",
+      className: "ml-0 max-w-0 overflow-hidden whitespace-nowrap opacity-0 transition-all duration-300 ease-out group-hover:ml-2 group-hover:max-w-[12rem] group-hover:opacity-100 group-focus-visible:ml-2 group-focus-visible:max-w-[12rem] group-focus-visible:opacity-100 motion-reduce:transition-none",
+      children: PHONE_DISPLAY
+    })]
+  });
+}
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (FloatingCTA);
 
 /***/ },
 
@@ -2031,10 +2111,10 @@ function initCounters() {
   const counters = document.querySelectorAll("[data-counter]");
   if (!counters.length) return;
   const run = el => {
-    const target = parseInt(el.getAttribute("data-target"), 10);
+    const target = parseInt(el.getAttribute("data-target").replace(/,/g, ""), 10);
     if (isNaN(target)) return;
     if (reduceMotion) {
-      el.textContent = String(target);
+      el.textContent = target.toLocaleString();
       return;
     }
     const duration = 1400;
@@ -2042,7 +2122,7 @@ function initCounters() {
     const tick = now => {
       const p = Math.min((now - start) / duration, 1);
       const eased = 1 - Math.pow(1 - p, 3); // easeOutCubic
-      el.textContent = String(Math.round(eased * target));
+      el.textContent = Math.round(eased * target).toLocaleString();
       if (p < 1) requestAnimationFrame(tick);
     };
     requestAnimationFrame(tick);
@@ -2065,52 +2145,40 @@ function initCounters() {
 }
 
 /* ---------- 3. Season cycle (slider <-> scroll + auto-avance) ---------- */
-function initSeasonCycle() {
-  const track = document.getElementById("season-track");
-  const range = document.getElementById("season-range");
-  if (!track || !range) return;
-  const stages = track.querySelectorAll(".season-stage");
-  if (!stages.length) return;
-  let syncing = false;
-  function goTo(idx) {
-    syncing = true;
-    range.value = String(idx);
-    track.scrollTo({
-      left: stages[idx].offsetLeft - track.offsetLeft,
-      behavior: reduceMotion ? "auto" : "smooth"
+/* ---------- 3. Season "blades" (acordeón + auto-rotación) ---------- */
+function initSeasonBlades() {
+  const wrap = document.getElementById("season-blades");
+  if (!wrap) return;
+  const blades = Array.from(wrap.querySelectorAll("[data-blade]"));
+  const dots = Array.from(document.querySelectorAll("[data-blade-dot]"));
+  if (!blades.length) return;
+  let active = 0;
+  function setActive(idx) {
+    active = idx;
+    blades.forEach((b, i) => {
+      const on = i === idx;
+      b.classList.toggle("is-active", on);
+      b.setAttribute("aria-expanded", on ? "true" : "false");
     });
-    window.setTimeout(() => syncing = false, 400);
+    dots.forEach((d, i) => {
+      d.classList.toggle("bg-olivar-vivo", i === idx);
+      d.classList.toggle("bg-white/20", i !== idx);
+    });
   }
-
-  // range -> scroll
-  range.addEventListener("input", () => {
-    goTo(parseInt(range.value, 10));
+  blades.forEach((b, i) => {
+    b.addEventListener("pointerenter", () => setActive(i));
+    b.addEventListener("focus", () => setActive(i));
+    b.addEventListener("click", () => setActive(i));
   });
 
-  // scroll -> range
-  let ticking = false;
-  track.addEventListener("scroll", () => {
-    if (syncing || ticking) return;
-    ticking = true;
-    requestAnimationFrame(() => {
-      const idx = Math.round(track.scrollLeft / track.clientWidth);
-      if (String(idx) !== range.value) range.value = String(idx);
-      ticking = false;
-    });
-  }, {
-    passive: true
-  });
-
-  // ---- Auto-avance (las cards se mueven solas) ----
-  if (reduceMotion) return; // sin autoplay si el usuario prefiere menos movimiento
-
-  const section = track.closest("[data-season]") || track;
-  const DELAY = 4500;
+  // ---- Auto-rotación (las estaciones se apilan solas) ----
+  if (reduceMotion) return;
+  const section = wrap.closest("[data-season]") || wrap;
+  const DELAY = 4000;
   let timer = null;
   let paused = false;
   function tick() {
-    if (paused) return;
-    goTo((parseInt(range.value, 10) + 1) % stages.length);
+    if (!paused) setActive((active + 1) % blades.length);
   }
   function start() {
     if (!timer) timer = window.setInterval(tick, DELAY);
@@ -2121,18 +2189,10 @@ function initSeasonCycle() {
       timer = null;
     }
   }
-
-  // Pausa al pasar el cursor / enfocar / interactuar
   section.addEventListener("pointerenter", () => paused = true);
   section.addEventListener("pointerleave", () => paused = false);
   section.addEventListener("focusin", () => paused = true);
   section.addEventListener("focusout", () => paused = false);
-  range.addEventListener("input", () => {
-    stop();
-    start();
-  });
-
-  // Arranca solo cuando la sección está visible
   if ("IntersectionObserver" in window) {
     const io = new IntersectionObserver(entries => entries.forEach(e => e.isIntersecting ? start() : stop()), {
       threshold: 0.3
@@ -2172,7 +2232,7 @@ function initParallax() {
 function initHome() {
   initReveals();
   initCounters();
-  initSeasonCycle();
+  initSeasonBlades();
   initParallax();
 }
 if (document.readyState === "loading") {
@@ -4266,14 +4326,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _scripts_Navbar__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./scripts/Navbar */ "./src/scripts/Navbar.js");
 /* harmony import */ var _scripts_Footer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./scripts/Footer */ "./src/scripts/Footer.js");
 /* harmony import */ var _scripts_ContactForm__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./scripts/ContactForm */ "./src/scripts/ContactForm.js");
-/* harmony import */ var _scripts_home__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./scripts/home */ "./src/scripts/home.js");
-/* harmony import */ var _scripts_home__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_scripts_home__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var react_dom_client__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-dom/client */ "react-dom/client");
-/* harmony import */ var react_dom_client__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react_dom_client__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react/jsx-runtime */ "react/jsx-runtime");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _scripts_FloatingCTA__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./scripts/FloatingCTA */ "./src/scripts/FloatingCTA.js");
+/* harmony import */ var _scripts_home__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./scripts/home */ "./src/scripts/home.js");
+/* harmony import */ var _scripts_home__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_scripts_home__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var react_dom_client__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-dom/client */ "react-dom/client");
+/* harmony import */ var react_dom_client__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(react_dom_client__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react/jsx-runtime */ "react/jsx-runtime");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__);
+
 
 
 
@@ -4285,19 +4347,25 @@ __webpack_require__.r(__webpack_exports__);
 
 const navbarEl = document.querySelector("#render-navbar");
 if (navbarEl) {
-  react_dom_client__WEBPACK_IMPORTED_MODULE_5___default().createRoot(navbarEl).render(/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_scripts_Navbar__WEBPACK_IMPORTED_MODULE_0__["default"], {}));
+  react_dom_client__WEBPACK_IMPORTED_MODULE_6___default().createRoot(navbarEl).render(/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_scripts_Navbar__WEBPACK_IMPORTED_MODULE_0__["default"], {}));
 }
 
 // Monta el Footer en su contenedor (definido en footer.php).
 const footerEl = document.querySelector("#render-footer");
 if (footerEl) {
-  react_dom_client__WEBPACK_IMPORTED_MODULE_5___default().createRoot(footerEl).render(/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_scripts_Footer__WEBPACK_IMPORTED_MODULE_1__["default"], {}));
+  react_dom_client__WEBPACK_IMPORTED_MODULE_6___default().createRoot(footerEl).render(/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_scripts_Footer__WEBPACK_IMPORTED_MODULE_1__["default"], {}));
 }
 
 // Monta el Contact Form donde exista el contenedor (ej. en la página de contacto).
 const contactEl = document.querySelector("#render-contact-form");
 if (contactEl) {
-  react_dom_client__WEBPACK_IMPORTED_MODULE_5___default().createRoot(contactEl).render(/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_scripts_ContactForm__WEBPACK_IMPORTED_MODULE_2__["default"], {}));
+  react_dom_client__WEBPACK_IMPORTED_MODULE_6___default().createRoot(contactEl).render(/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_scripts_ContactForm__WEBPACK_IMPORTED_MODULE_2__["default"], {}));
+}
+
+// Monta el botón flotante (aparece al hacer scroll). Contenedor en footer.php.
+const floatingCtaEl = document.querySelector("#render-floating-cta");
+if (floatingCtaEl) {
+  react_dom_client__WEBPACK_IMPORTED_MODULE_6___default().createRoot(floatingCtaEl).render(/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_scripts_FloatingCTA__WEBPACK_IMPORTED_MODULE_3__["default"], {}));
 }
 
 // Las interacciones del Home (home.js) se auto-inicializan al importarse.
